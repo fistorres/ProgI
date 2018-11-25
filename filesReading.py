@@ -22,15 +22,20 @@ def readExpertsFile(fileName):
     
     fileIn = open(fileName, 'r')
 
-    # ... <to complete>
+    # ... <to complete> ?????? what do i do gil
 
     return outputList
 
 
 
 def readHeader(fileName):
-    
-    # ... <to complete> ... contrato
+    """
+    Converts a given file listing experts and returns day, time,
+    company as variables and scope as a dicionary with the name of the expert as the key and its requirements as a list.
+    Requires : fileName is str, the name of a .txt file listing experts,
+    following the format specified in the project.
+    Ensures: day, time and company as variables and scope as a dictionary with the name of the expert
+    as key and its requirements as a list"""
 
     fileIn = open(fileName, 'r')
 
