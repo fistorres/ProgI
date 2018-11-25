@@ -24,7 +24,7 @@ def addSchedule(year, month, day, hour, minute, customer, worker):
     """
     Opens a schedule file in append mode, adds a new entry, then closes the file
     Requires: year, month, day, hour, minute are int, customer, worker are str
-    Ensures: Adds a new line to the corresponding schedule file with the inputed
+    Ensures: Adds a new line to the corresponding schedule file with the inputted
     information
     """
     fileName = str(year)+'y'+str(month)+'m'+str(day)+'schedule'+str(hour)+'h'+str(minute)+'.txt'
