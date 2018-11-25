@@ -21,7 +21,7 @@ def newFile(date, time, fileType, company):
     file.close()
 
 
-def addSchedule(date, time, customer, worker):
+def addSchedule(date, time, customer, expert):
     """
     Opens a schedule file in append mode, adds a new entry, then closes the file
     Requires: date is datetime.date, time is datetime.time, customer, worker are str
@@ -32,5 +32,18 @@ def addSchedule(date, time, customer, worker):
                'schedule'+str(time.hour)+'h'+str(time.minute)+'.txt'
     file = open(fileName, 'a')  # opens the corresponding file in append mode
     file.write(str(date) + ', ' + str(time.hour) + ':' + str(time.minute) + ', ' +
-               customer + ', ' + worker)
+               customer + ', ' + expert)
+    file.close()
+
+def addExpert(date, time, expert):
+    """
+    Adds an expert to a experts file from a specific date and time
+    Requires: expert is a dictionary, date is datetime.date, time is datetime.time
+    Ensures: The expert information is appended to a file from a specific date and
+    time
+    """
+    fileName = str(date.year)+'y'+str(date.month)+'m'+str(date.day) +\
+               'experts'+str(time.hour)+'h'+str(time.minute)+'.txt'
+    file=open(fileName,'a')  # opens the corresponding file in append mode
+    file.write(expert)
     file.close()
