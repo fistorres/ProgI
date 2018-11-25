@@ -2,7 +2,11 @@
 This is my debugging script - it is not to be submitted for evaluation
 -Gil
 """
+import datetime
 import filesWriting
 
-filesWriting.newFile(2018,10,20,4,20,'schedule','iCageDoree')
-filesWriting.addSchedule(2018,10,20,4,20,'John Smith','Jane Doe')
+date = datetime.date(2018,10,20)
+time = datetime.time(4,20)
+
+filesWriting.newFile(date, time,'schedule','iCageDoree')
+filesWriting.addSchedule(date, time,'John Smith','Jane Doe')
