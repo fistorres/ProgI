@@ -30,15 +30,6 @@ def readExpertsFile(fileName):
 
     return outputList
 
-
-def tupexp(fileName):
-    """ Turn string of fields of experts into a tuple
-    Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures : tuple of fields of all the experts in the list """
-    explist = readExpertsFile("2019y01m12experts09h00.txt")
-    for i in explist:
-        i[2] = tuple(i[2].replace(";",",").replace("(","").replace(")","").split(","))
-        
         
 def readHeader(fileName):
     """
