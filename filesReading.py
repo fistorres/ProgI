@@ -4,25 +4,29 @@
 # 49269 Mário Gil Oliveira
 
 
-
-
-import os
-os.chdir('C:\\Users\\Sofia Torres\\Desktop\\3A1S\\PROGI\\projeto\\tests\\example1')
-
 def readExpertsFile(fileName):
     """
     Converts a given file listing experts into a collection
     Requires: fileName is str, the name of a .txt file listing experts,
     following the format specified in the project.
-    Ensures: list whose first element is ... <to complete>
+    Ensures: list whose first element is the first expert and its resume up until the last expert
     """
+
+    fileIn = open(fileName, 'r')
+    filetwo = open(fileName, 'r')
+    lenfile = len(filetwo.readlines())
+    
     outputList = []
     
-    outputList.append(readHeader(fileName))
-    
-    fileIn = open(fileName, 'r')
+    i = 0
+    while i < 7:
+        fileIn.readline()
+        i = i+1
 
-    # ... <to complete> ?????? what do i do gil
+    i = 0
+    while i < lenfile-7:
+        outputList.append(fileIn.readline().replace("\n", "").split(","))
+        i = i+i
 
     return outputList
 
@@ -31,34 +35,25 @@ def readExpertsFile(fileName):
 def readHeader(fileName):
     """
     Converts a given file listing experts and returns day, time,
-    company as variables and scope as a dicionary with the name of the expert as the key and its requirements as a list.
+    company as variables.
     Requires : fileName is str, the name of a .txt file listing experts,
     following the format specified in the project.
-    Ensures: day, time and company as variables and scope as a dictionary with the name of the expert
-    as key and its requirements as a list"""
+    Ensures: day, time and company as str. """
 
     fileIn = open(fileName, 'r')
 
     fileIn.readline()
-    day = fileIn.readline().strip().replace("\n", "")
+    day = fileIn.readline().replace("\n", "")
     fileIn.readline()
-    time = fileIn.readline().strip().replace("\n", "")
+    time = fileIn.readline().replace("\n", "")
     fileIn.readline()
-    company = fileIn.readline().strip().replace("\n", "")
+    company = fileIn.readline().replace("\n", "")
     fileIn.readline()
+    
+    return (day, time, company)
 
-    #scope = fileIn.readline().strip().replace("\n", "")
-    
-    scope = {}
-    i = 0
-    #lenFileIn = sum(1 for line in fileIn)
-    #while i < lenFileIn:
-    while i < 5:   ## não sei parar este loop. len(fileIn) nao funciona
-        listex = fileIn.readline().replace("\n", "").split(",")
-        scope[listex[0]] = listex[1:]
-        i = i+1
-    
-    return (day, time, company, scope)
+print(readExpertsFile("2019y01m12experts09h00.txt"))
+
 
 
 
