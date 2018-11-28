@@ -20,3 +20,6 @@ def formatdate(fileName):
         i[5] = datetime.date(int(i[5][1:5]),int(i[5][6:8]),int(i[5][9:11]))
         i[6] = datetime.time(int(i[6][1:3]),int(i[6][4:6]))
     return explist
+  
+    
+    
