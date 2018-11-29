@@ -4,7 +4,7 @@
 # 49269 Mário Gil Oliveira
 
 import os
-os.chdir('C:\\Users\\Sofia Torres\\Desktop\\3A1S\\PROGI\\projeto\\tests\\example1')
+#  os.chdir('C:\\Users\\Sofia Torres\\Desktop\\3A1S\\PROGI\\projeto\\tests\\example1')
 import datetime
 
 def readExpertsFile(fileName):

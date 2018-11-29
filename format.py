@@ -25,7 +25,7 @@ def formatdateExperts(fileName):
         i[6] = datetime.time(int(i[6][0:2]),int(i[6][3:5]))
         i[3] = int(i[3])
         i[4] = int(i[4])
-        i[7] = int(i[7])
+        i[7] = float(i[7])
     return explist
 
 def formatdateClients(fileName):
@@ -44,6 +44,7 @@ def formatdateClients(fileName):
 
 
 m = formatdateClients("2019y01m12clients09h00.txt")
+n = formatdateExperts("2019y01m12experts09h00.txt")
 
 
 
