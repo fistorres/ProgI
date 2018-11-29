@@ -3,6 +3,9 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+import os
+os.chdir('C:\\Users\\Sofia Torres\\Desktop\\3A1S\\PROGI\\projeto\\tests\\example1')
+import datetime
 
 def readExpertsFile(fileName):
     """
@@ -25,15 +28,16 @@ def readExpertsFile(fileName):
 
     i = 0
     while i < lenfile-7:
-        outputList.append(fileIn.readline().replace("\n", "").split(","))
+        outputList.append(fileIn.readline().replace("*","").replace(" ","").replace("\n", "").split(","))
         i = i+1
 
     return outputList
 
-        
+
+
 def readHeader(fileName):
     """
-    Converts a given file listing experts and returns day, time,
+    Converts a given file listing experts or clients and returns day, time,
     company as variables.
     Requires : fileName is str, the name of a .txt file listing experts,
     following the format specified in the project.
@@ -49,9 +53,7 @@ def readHeader(fileName):
     company = fileIn.readline().replace("\n", "")
     fileIn.readline()
     
-    return (day, time, company)
-
-print(readExpertsFile("2019y01m12experts09h00.txt"))
+    return (datetime.date(int(day[0:4]),int(day[5:7]),int(day[8:10])), datetime.time(int(time[0:2]),int(time[3:5])), company)
 
 
 
