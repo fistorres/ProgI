@@ -6,6 +6,9 @@ import datetime
 import filesWriting
 import scheduling
 
+import format
+import filesReading
+
 expert1 = [
     'Dan Tufis', # 0 - name
     'lisbon',  # 1
@@ -39,7 +42,7 @@ client = [
     datetime.time(1,0)
 ]
 
-print('Os experts possiveis sao:', scheduling.atribution(client, experts))
+#  print('Os experts possiveis sao:', scheduling.atribution(client, experts))
 
 """
 #debug filesWriting
@@ -54,4 +57,8 @@ filesWriting.addSchedule(date, time, 'John Smith', 'Jane Doe')
 filesWriting.newFile(date, time, 'experts','iCageDoree')
 filesWriting.addExpert(date,time,expert)
 """
+
+m = format.formatdateClients("2019y03m20clients12h30.txt")
+n = format.formatdateExperts("2019y03m20experts12h30.txt")
+print(scheduling.atribution(m[2], n))
 

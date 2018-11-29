@@ -18,9 +18,12 @@ def atribution (client, experts):
         if client[6] in i[2] and i[3] >= client[5] and i[4] <= client[4] and i[1] == client[1]:
             compatibleExperts.append(i)
 
-    sorted(compatibleExperts, key=itemgetter(5))
+    compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
 
-    return compatibleExperts
+    if len(compatibleExperts) == 0:
+        return []
+    else:
+        return compatibleExperts[0]
 
 

@@ -43,8 +43,6 @@ def formatdateClients(fileName):
 
 
 
-m = formatdateClients("2019y01m12clients09h00.txt")
-n = formatdateExperts("2019y01m12experts09h00.txt")
 
 
 
