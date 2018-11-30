@@ -1,26 +1,19 @@
-import filesReading
-import datetime
+# 2018-2019 Programação 1 (LTI)
+# Grupo 38
+# 49187 Sofia Torres
+# 49269 Mário Gil Oliveira
 
 import filesReading
 import datetime
 
 
-def tupexp(fileName):
-    """ Turn string of fields of experts into a tuple
+def formatExperts(fileName): #final list of experts to itenerate on
+    """ Edits a list of lists of experts. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures : tuple of fields of all the experts in the list """
-    explist = filesReading.readExpertsFile(fileName)
+    Ensures: date and time as datetime format,ranking and pay as int and earnings as float and the experts areas to a tuple """
+    explist = filesReading.readFile(fileName)
     for i in explist:
         i[2] = tuple(i[2].replace(";",",").replace("(","").replace(")","").split(","))
-    return explist
-
-
-def formatdateExperts(fileName):
-    """ Turn date and time from str to datetime format
-    Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures: date and time as datetime format """
-    explist = tupexp(fileName)
-    for i in explist:
         i[5] = datetime.date(int(i[5][0:4]),int(i[5][5:7]),int(i[5][8:10]))
         i[6] = datetime.time(int(i[6][0:2]),int(i[6][3:5]))
         i[3] = int(i[3])
@@ -28,11 +21,11 @@ def formatdateExperts(fileName):
         i[7] = float(i[7])
     return explist
 
-def formatdateClients(fileName):
-    """ Turn date and time from str to datetime format
+def formatClients(fileName): #final list of clients to itenerate on
+    """Edits a list of lists of clients. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures: date and time as datetime format """
-    cllist = filesReading.readExpertsFile(fileName)
+    Ensures: date and time as datetime format,ranking and pay as int """
+    cllist = filesReading.readFile(fileName)
     for i in cllist:
         i[2] = datetime.date( int (i[2][0:4]) , int(i[2][5:7]) , int(i[2][8:10]) )
         i[3] = datetime.time(int(i[3][0:2]),int(i[3][3:5]))
@@ -40,7 +33,6 @@ def formatdateClients(fileName):
         i[4] = int(i[4])
         i[5] = int(i[5])
     return cllist
-
 
 
 
@@ -66,11 +58,4 @@ CLIENTS
 [5] > estrela INT
 [6] > dominio TUPLE
 [7] > horas contrato I
-
-sort by: eg.
-sorted(m, key=lambda m: m[7],reverse=True) DESC
-ou
-sorted(m, key=lambda m: m[7]) ASC
-
-
 """
