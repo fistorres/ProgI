@@ -8,6 +8,7 @@ import scheduling
 
 import format
 import filesReading
+import constants
 
 expert1 = [
     'Dan Tufis', # 0 - name
@@ -58,7 +59,15 @@ filesWriting.newFile(date, time, 'experts','iCageDoree')
 filesWriting.addExpert(date,time,expert)
 """
 
+'''
+#debug attribution
 m = format.formatdateClients("2019y03m20clients12h30.txt")
 n = format.formatdateExperts("2019y03m20experts12h30.txt")
-print(scheduling.atribution(m[2], n))
+print(scheduling.attribution(m[2], n))
+
+'''
+
+time = constants.convertTime('24:00')
+print(constants.timeCalculate('2018-10-20', '10:00', time))
+
 

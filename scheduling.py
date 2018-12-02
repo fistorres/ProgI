@@ -5,7 +5,7 @@
 
 from operator import itemgetter
 
-def atribution (client, experts):
+def attribution (client, experts):
     """
     Matches a client request with a list of experts
     Requires: client as a list with the atributes as stated in the project
@@ -21,9 +21,8 @@ def atribution (client, experts):
     compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
 
-    if len(compatibleExperts) == 0:
-        return []
-    else:
+    if len(compatibleExperts) > 0:
         return compatibleExperts[0]
+
 
 
