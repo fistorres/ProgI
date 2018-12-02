@@ -2,7 +2,6 @@
 # Grupo 38
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
-
 import sys
 import filesReading
 import formated
@@ -21,6 +20,16 @@ def assign(fileNameExperts, fileNameClients):
     tasks and the updated listing of experts, following the format
     and naming convention indicated in the project.
     """
+
+    # eu acho que isto nao está a funcionar, mas o objetivo era
+    # que se a data ou o horario fossem diferentes que o programa emitisse erro
+    if filesReading.readHeader(fileNameExperts)[0:3] != \
+    filesReading.readHeader(fileNameExperts)[0:3]:
+        print("Error in input files: inconsistent files",
+              fileNameExperts,"and",fileNameExperts)
+
+
+    
     rawexp = filesReading.readFile(fileNameExperts)
     rawcl = filesReading.readFile(fileNameClients)
 
@@ -29,12 +38,7 @@ def assign(fileNameExperts, fileNameClients):
 
     sch = scheduling.atribution(formatedcli,formatedexp)
 
-    return sch ## Eu estou a por aqui tudo até oque funciona. Já experimentei correr na command line e acho que está bem :P
-    ## se quiseres correr na cmd line escreve > cyberConc.py inputFileName1 inputFileName2
-
-
-
-
+    return sch 
 
 inputFileName1, inputFileName2 = sys.argv[1:]
 
@@ -42,5 +46,6 @@ assign(inputFileName1, inputFileName2)
 
 
 # assign(sys.argv[1],sys.argv[2])
+
 
 
