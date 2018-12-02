@@ -4,6 +4,12 @@
 # 49269 Mário Gil Oliveira
 
 import sys
+import filesReading
+import formated
+import constants
+import filesWriting
+import scheduling
+
 
 def assign(fileNameExperts, fileNameClients):
     """
@@ -15,7 +21,16 @@ def assign(fileNameExperts, fileNameClients):
     tasks and the updated listing of experts, following the format
     and naming convention indicated in the project.
     """
-        #to be completed
+    rawexp = filesReading.readFile(fileNameExperts)
+    rawcl = filesReading.readFile(fileNameClients)
+
+    formatedexp = formated.formatExperts(rawexp)
+    formatedcli = formated.formatClients(rawcl)
+
+    sch = scheduling.atribution(formatedcli,formatedexp)
+
+    return sch ## Eu estou a por aqui tudo até oque funciona. Já experimentei correr na command line e acho que está bem :P
+    ## se quiseres correr na cmd line escreve > cyberConc.py inputFileName1 inputFileName2
 
 
 
@@ -24,5 +39,8 @@ def assign(fileNameExperts, fileNameClients):
 inputFileName1, inputFileName2 = sys.argv[1:]
 
 assign(inputFileName1, inputFileName2)
+
+
+# assign(sys.argv[1],sys.argv[2])
 
 
