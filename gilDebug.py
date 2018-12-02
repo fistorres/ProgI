@@ -5,8 +5,6 @@ This is my debugging script - it is not to be submitted for evaluation
 import datetime
 import filesWriting
 import scheduling
-
-import format
 import filesReading
 import constants
 
@@ -67,7 +65,6 @@ print(scheduling.attribution(m[2], n))
 
 '''
 
-time = constants.convertTime('24:00')
-print(constants.timeCalculate('2018-10-20', '10:00', time))
+print(constants.timeCalculate('2018-10-20', '20:00', 12*60))
 
 

@@ -45,15 +45,15 @@ def timeCalculate (inDate, inTime, increment):
     
     while (endHours == 20 and endMinutes > 0) or endHours > 20:
         print(endHours)
-        endHours = 8 + (20-endHours)
-        endDay += 1 #corrigir um erro aqui
+        endHours = 8 + (endHours-20)
+        endDay += 1
 
     while endDay > 30:
-        endDay = 30 - endDay
+        endDay = endDay - 30
         endMonth += 1
 
     while endMonth > 12:
-        endMonth = 12 - endMonth
+        endMonth = endMonth - 12
         endYear += 1
 
     return (
