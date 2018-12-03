@@ -42,7 +42,7 @@ def atributionuni (client, experts):
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
 
     if len(compatibleExperts) == 0:
-        return ([],experts)
+        return ("declined",experts)
     
     # buscar indice do expert sorteado
     indi = experts.index(compatibleExperts[0])
