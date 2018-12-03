@@ -13,10 +13,13 @@ def newFile(date, time, fileType, company):
     Ensures: the creation of a file with the required file name and header
     as stated in the project, the file is left open.
     """
-    fileName = str(date)[0:4]+'y'+str(date)[5:7]+'m'+str(date)[8:10] +\
-               fileType + str(time)[0:2]+'h'+str(time)[3:5]+'.txt'
+
+
+
+    fileName = date[0:4]+'y'+date[5:7]+'m'+date[8:10] +\
+               fileType + time[0:2]+'h'+time[3:5]+'.txt'
     file = open(fileName, 'w')  # opens a new file in write mode w/ fileName
-    file.writelines(['Day: \n', str(date), '\n', 'Time: \n', time.strftime('%H'),':', str(time.minute),
+    file.writelines(['Day: \n', date, '\n', 'Time: \n', time,':', time[3:],
                      '\n', 'Company: \n', company, '\n', fileType.capitalize(), ': \n'])
     file.close()
 
@@ -28,10 +31,10 @@ def addSchedule(date, time, customer, expert):
     Ensures: Adds a new line to the corresponding schedule file with the inputted
     information
     """
-    fileName = str(date)[0:4] + 'y' + str(date)[5:7] + 'm' + str(date)[8:10] + \
-               'schedule' + str(time)[0:2] + 'h' + str(time)[3:5] + '.txt'
+    fileName = date[0:4] + 'y' + date[5:7] + 'm' + date[8:10] + \
+               'schedule' + time[0:2] + 'h' + time[3:5] + '.txt'
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    file.write(str(date) + ', ' + time.strftime('%H') + ':' + time.strftime('%M') + ', ' +
+    file.write(date + ', ' + time + ', ' +
                customer + ', ' + expert)
     file.close()
 
@@ -42,8 +45,8 @@ def addExpert(date, time, expert):
     Ensures: The expert information is appended to a file from a specific date and
     time
     """
-    fileName = str(date)[0:4] + 'y' + str(date)[5:7] + 'm' + str(date)[8:10] + \
-               'experts' + str(time)[0:2] + 'h' + str(time)[3:5] + '.txt'
+    fileName = date[0:4] + 'y' + date[5:7] + 'm' + date[8:10] + \
+               'experts' + time[0:2] + 'h' + time[3:5] + '.txt'
     file=open(fileName,'a')  # opens the corresponding file in append mode
     file.write(
         str(expert[0]) + ', ' +
@@ -51,7 +54,7 @@ def addExpert(date, time, expert):
         str(expert[2]) + ', ' +
         str(expert[3]) + '*, ' +
         str(expert[4]) + ', ' +
-        str(time)[0:2] + ':' + str(time)[3:5] + ', ' +
+        str(time)[0:2] + ':' + time[3:5] + ', ' +
         str(expert[6])
     )
     file.close()
