@@ -14,8 +14,8 @@ expert1 = [
     ('heating', 'doors', 'windows'),  # 2
     5,  # 3
     10,  # 4
-    datetime.date(2018, 10, 11), # 5
-    datetime.time(9,15),  # 6
+    '2018-10-11', # 5
+    '9:15',  # 6
     2879]  # 7
 
 expert2 = [

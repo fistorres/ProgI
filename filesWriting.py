@@ -3,8 +3,6 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
-import datetime
-
 def newFile(date, time, fileType, company):
     """
     Opens a file in write mode and writes the required header in the first lines.
@@ -44,7 +42,9 @@ def addSchedule(date, time, customer, expert):
 def addExpert(date, time, expert):
     """
     Adds an expert to a experts file from a specific date and time
-    Requires: expert is a list, date is datetime.date, time is datetime.time
+    Requires: expert is a list
+    Requires: date is str in YYYY-DD-MM format
+    Requires: time is str in HH:MM format
     Ensures: The expert information is appended to a file from a specific date and
     time
     """
