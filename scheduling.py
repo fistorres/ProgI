@@ -11,8 +11,16 @@ def atributional(clients,experts):
     """ """
     tup = []
     for i in clients:
-        tup = tup + [(i[0],atributionuni(i,experts)[0]),]
+        #print(i[0])
+        expr = atributionuni(i,experts)[0]
+        tup = tup + [(i[0],expr),]
+        #print(tup)
     return tup
+
+#tup[0][0] > nome do cliente
+#tup[0][1][0] > nome do expert
+
+
 
 def atributionuni (client, experts):
     """
@@ -33,24 +41,25 @@ def atributionuni (client, experts):
     compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
 
+    if len(compatibleExperts) == 0:
+        return ([],experts)
+    
     # buscar indice do expert sorteado
     indi = experts.index(compatibleExperts[0])
-    print(indi,client[0])
+    #print(indi)
           
     #update da hora e do dia disponivel
-    experts[indi][5] = constants.timeCalculate(experts[indi][5],experts[indi][6],client[7])[0]
-    experts[indi][6] = constants.timeCalculate(experts[indi][5],experts[indi][6],client[7])[1]
-    #print(experts[indi][5],experts[indi][6])
+    newTime = constants.timeCalculate(experts[indi][5],experts[indi][6],client[7])
+    experts[indi][5] = newTime[0]
+    experts[indi][6] = newTime[1]
 
     #update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + client[4]*client[7]
-    #print(experts[indi])
     
 
-    if len(compatibleExperts) == 0:
-        return ([],experts)
-
+    
     return (compatibleExperts[0],experts)
+
 
 
 
