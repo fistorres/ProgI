@@ -8,13 +8,13 @@ import datetime
 def newFile(date, time, fileType, company):
     """
     Opens a file in write mode and writes the required header in the first lines.
-    Requires: date is datetime.date, time is datetime.time, company is str
-     and fileType is str (must be either 'schedule' or 'experts').
+    Requires: date is str in YYYY-MM-DD format
+    Requires: time is str in HH:MM format
+    Requires: company is str, the name of the company
+    Requires: fileType is str (must be either 'schedule' or 'experts').
     Ensures: the creation of a file with the required file name and header
     as stated in the project, the file is left open.
     """
-
-
 
     fileName = date[0:4]+'y'+date[5:7]+'m'+date[8:10] +\
                fileType + time[0:2]+'h'+time[3:5]+'.txt'
@@ -27,7 +27,10 @@ def newFile(date, time, fileType, company):
 def addSchedule(date, time, customer, expert):
     """
     Opens a schedule file in append mode, adds a new entry, then closes the file
-    Requires: date is datetime.date, time is datetime.time, customer, worker are str
+    Requires: date is str in YYYY-MM-DD format
+    Requires: time is str in HH:MM format
+    Requires: customer is str
+    Requyires: worker is str
     Ensures: Adds a new line to the corresponding schedule file with the inputted
     information
     """
