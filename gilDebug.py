@@ -43,10 +43,10 @@ client = [
 
 #  print('Os experts possiveis sao:', scheduling.atribution(client, experts))
 
-"""
+
 #debug filesWriting
-date = datetime.date(2018,10,20)
-time = datetime.time(4,20)
+date = '2018-10-20'
+time = '04:20'
 
 filesWriting.newFile(date, time, 'schedule', 'iCageDoree')
 filesWriting.addSchedule(date, time, 'John Smith', 'Jane Doe')
@@ -54,8 +54,8 @@ filesWriting.addSchedule(date, time, 'John Smith', 'Jane Doe')
 
 
 filesWriting.newFile(date, time, 'experts','iCageDoree')
-filesWriting.addExpert(date,time,expert)
-"""
+filesWriting.addExpert(date,time,expert1)
+
 
 '''
 #debug attribution
@@ -65,6 +65,8 @@ print(scheduling.attribution(m[2], n))
 
 '''
 
+'''
 print(constants.timeCalculate('2018-10-20', '20:00', 12*60))
+'''
 
 
