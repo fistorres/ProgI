@@ -6,32 +6,54 @@
 from operator import itemgetter
 import constants
 
+def CompareTimes(timeCli,timeExp):
+    """ Compares time and date of clients and Experts and returns the latest(???)
+    Requires: timeCli and timeExp as a tuple, first element being date as str
+    in YYYY-MM-DD format, and the second element being time as str in "HH:MM" format
+    Ensures: tuple in the same format with the latest date
+    """
+    # ("2019-03-14","14:45") ("2018-03-15","16:36")
 
-def attributional(clients,experts):
+    Cli = "".join(timeCli).replace("-","").replace(":","")
+    Exp = "".join(timeCli).replace("-","").replace(":","")
+
+    if Cli >= Exp:
+        
+        return timeCli
+    else:
+        return timeExp
+
+
+
+def atributional(clients,experts):
     """
     Runs the attribution function for each of the clients
     in the clients list
     Requires: clients as list
     Requires: experts as list
-    Ensures: a tuple in the following format
+    Ensures: a list in the following format
     (client name, expert name)
     """
     tup = []
     for i in clients:
         #print(i[0])
         expr = atribution(i,experts)[0]
-        tup = tup + [(i[0],expr),]
+        print(expr)
+        tup = tup + [(i,expr),]
         #print(tup)
     return tup
+
+
 
 #tup[0][0] > nome do cliente
 #tup[0][1][0] > nome do expert
 
 
-def attribution (client, experts):
+
+def atribution (client, experts):
     """
     Matches a client request with a list of experts
-    Requires: client as a list with the atributes as stated in the project
+    Requires: cient as a list with the atributes as stated in the project
     Requires: experts a list in which each item is a list of atributes of a specific expert,
     as stated in the project
     Ensures: a list with the atributes of the expert that best matches the request,
@@ -52,20 +74,26 @@ def attribution (client, experts):
     
     # buscar indice do expert sorteado
     indi = experts.index(compatibleExperts[0])
-    #ACHO QUE PRECISAMOS DE UMA FUNÇÃO PARA VERIFICAR QUAL HORA É A MENOR
-    #PARA DEPOIS FAZER UPDATE NO SCHEDULE
-          
+
+
+    # tuplo com (data,hora) do client e exp para compara-los
+    compareCli = (client[2],client[3])
+    compareExp = (compatibleExperts[0][5],compatibleExperts[0][6])
+    # compara função
+    TimeSchedule = CompareTimes(compareCli,compareExp)
+
     #update da hora e do dia disponivel
-    newTime = constants.timeCalculate(experts[indi][5],experts[indi][6],client[7])
-    experts[indi][5] = newTime[0]
-    experts[indi][6] = newTime[1]
+    newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
+    experts[indi][5] = newTime[0] #data
+    print(experts[indi][5],client[0],experts[indi][0])
+    experts[indi][6] = newTime[1] #hora
 
     #update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + client[4]*client[7]
     
 
     
-    return (compatibleExperts[0],experts)
+    return (experts[indi],experts)
 
 
 
