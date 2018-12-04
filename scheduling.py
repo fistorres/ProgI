@@ -42,11 +42,12 @@ def atributionuni (client, experts):
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
 
     if len(compatibleExperts) == 0:
-        return ("declined",experts)
+        return (["declined",],experts)
     
     # buscar indice do expert sorteado
     indi = experts.index(compatibleExperts[0])
-    #print(indi)
+    #ACHO QUE PRECISAMOS DE UMA FUNÇÃO PARA VERIFICAR QUAL HORA É A MENOR
+    #PARA DEPOIS FAZER UPDATE NO SCHEDULE
           
     #update da hora e do dia disponivel
     newTime = constants.timeCalculate(experts[indi][5],experts[indi][6],client[7])
@@ -59,8 +60,6 @@ def atributionuni (client, experts):
 
     
     return (compatibleExperts[0],experts)
-
-
 
 
 
