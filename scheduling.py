@@ -17,7 +17,7 @@ def CompareTimes(timeCli,timeExp):
     Cli = "".join(timeCli).replace("-","").replace(":","")
     Exp = "".join(timeCli).replace("-","").replace(":","")
 
-    if Cli >= Exp:
+    if int(Cli) >= int(Exp):
         
         return timeCli
     else:
