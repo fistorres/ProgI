@@ -65,14 +65,15 @@ def assign(fileNameExperts, fileNameClients):
     )
 
     # Creates a new file for the schedule
-    filesWriting.newFile(
+    Schedule = filesWriting.newFile(
         timestamp[0],
         timestamp[1], 
         'schedule',
         filesReading.readHeader(fileNameClients)[2]
     )
 
-for i in len(tupleClientExpert):
+    
+for i in tupleClientExpert:
     filesWriting.addSchedule(
         DATE,
         TIME,
