@@ -51,6 +51,8 @@ def addExpert(date, time, expert):
     fileName = date[0:4] + 'y' + date[5:7] + 'm' + date[8:10] + \
                'experts' + time[0:2] + 'h' + time[3:5] + '.txt'
     file=open(fileName,'a')  # opens the corresponding file in append mode
+
+    # writes the expert information, as well as the corresponding time
     file.write(
         str(expert[0]) + ', ' +
         str(expert[1]) + ', ' +

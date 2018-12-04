@@ -11,12 +11,9 @@ import filesWriting
 import scheduling
 
 
-
-
 def checkError(fileNameExperts, fileNameClients):
     """ """
-    
-    
+
     # Testar se os cabeçalhos são correspondentes entre Client e Expert
     headExp = filesReading.readHeader(fileNameExperts) 
     headCli = filesReading.readHeader(fileNameClients)
@@ -25,21 +22,19 @@ def checkError(fileNameExperts, fileNameClients):
               fileNameExperts,"and",fileNameExperts)
         return False
 
-    # testar se cabeçalho é igual ao nome do ficehiro
+    # testar se cabeçalho é igual ao nome do ficheiro
     # ex:2019y03m20clients12h30.txt = ('2019-02-20', '12:30', 'iCageDoree', 'Clients')   <<< deve dar erro neste exemplo
     for i in sys.argv[1:]:
         if i.replace("y","-").replace("m","-")[0:10] != (filesReading.readHeader(i))[0] or \
            str(i[10:17]) != lower.filesReading.readHeader(i)[3] or \
            str(i.replace("h",":")[17:21]) != filesReading.readHeader(i)[1]:
-           print("Error in input file: inconsistent name and header in file",i)
+           print("Error in input file: inconsistent name and header in file", i)
            return False
         else:
             print("Yupi")
             return True
-                                                                      
 
-    
-    
+
 def assign(fileNameExperts, fileNameClients):
     """
     Assign given experts given to given clients.
