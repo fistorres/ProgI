@@ -72,9 +72,13 @@ def assign(fileNameExperts, fileNameClients):
         filesReading.readHeader(fileNameClients)[2]
     )
 
-
-
-    return sch 
+for i in len(tupleClientExpert):
+    filesWriting.addSchedule(
+        DATE,
+        TIME,
+        tupleClientExpert[i][0], #client
+        tupleClientExpert[i][1] #expert
+    )
 
 
 #  start of program:
