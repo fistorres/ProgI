@@ -9,6 +9,7 @@ import formated
 import constants
 import filesWriting
 import scheduling
+import constants
 
 
 def checkError(fileNameExperts, fileNameClients):
@@ -46,22 +47,50 @@ def assign(fileNameExperts, fileNameClients):
     and naming convention indicated in the project.
     """
 
-    
+    # Reads the files into the variables
     rawexp = filesReading.readFile(fileNameExperts)
     rawcl = filesReading.readFile(fileNameClients)
 
     formatedexp = formated.formatExperts(rawexp)
     formatedcli = formated.formatClients(rawcl)
 
-    sch = scheduling.atributional(formatedcli,formatedexp)
+    tupleClientExpert = scheduling.atributional(formatedcli,formatedexp)
+
+    # Calculates the timestamp of the new file, 30 min
+    # after the input file
+    timestamp = constants.timeCalculate(
+        filesReading.readHeader(fileNameExperts)[0],
+        filesReading.readHeader(fileNameExperts)[1],
+        30  # time increment from input file
+    )
+
+    # Creates a new file for the schedule
+    filesWriting.newFile(
+        timestamp[0],
+        timestamp[1], 
+        'schedule',
+        filesReading.readHeader(fileNameClients)[2]
+    )
+
+
 
     return sch 
 
 
-inputFileName1, inputFileName2 = sys.argv[1:]
+#  start of program:
 
-if checkError(inputFileName1, inputFileName2):
-    assign(inputFileName1, inputFileName2)
+inputExperts, inputClients = sys.argv[1:]
+
+if checkError(inputExperts, inputClients):
+    assign(inputExperts, inputClients)
+
+
+
+
+
+
+
+
 
 
 

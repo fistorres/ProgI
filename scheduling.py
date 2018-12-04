@@ -7,8 +7,15 @@ from operator import itemgetter
 import constants
 
 
-def atributional(clients,experts):
-    """ """
+def attributional(clients,experts):
+    """
+    Runs the attribution function for each of the clients
+    in the clients list
+    Requires: clients as list
+    Requires: experts as list
+    Ensures: a tuple in the following format
+    (client name, expert name)
+    """
     tup = []
     for i in clients:
         #print(i[0])
@@ -21,8 +28,7 @@ def atributional(clients,experts):
 #tup[0][1][0] > nome do expert
 
 
-
-def atributionuni (client, experts):
+def attribution (client, experts):
     """
     Matches a client request with a list of experts
     Requires: client as a list with the atributes as stated in the project
