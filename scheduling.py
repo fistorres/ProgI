@@ -19,7 +19,7 @@ def attributional(clients,experts):
     tup = []
     for i in clients:
         #print(i[0])
-        expr = atributionuni(i,experts)[0]
+        expr = atribution(i,experts)[0]
         tup = tup + [(i[0],expr),]
         #print(tup)
     return tup
