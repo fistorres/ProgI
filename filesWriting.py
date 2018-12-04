@@ -39,6 +39,7 @@ def addSchedule(date, time, customer, expert):
                customer + ', ' + expert)
     file.close()
 
+
 def addExpert(date, time, expert):
     """
     Adds an expert to a experts file from a specific date and time
