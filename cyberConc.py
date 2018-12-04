@@ -28,7 +28,7 @@ def checkError(fileNameExperts, fileNameClients):
     for i in sys.argv[1:]:
         if i.replace("y","-").replace("m","-")[0:10] != (filesReading.readHeader(i))[0] or \
            str(i[10:17]) != lower.filesReading.readHeader(i)[3] or \
-           str(i.replace("h",":")[17:21]) != filesReading.readHeader(i)[1]:
+           str(i.replace("h",":")[17:22]) != filesReading.readHeader(i)[1]:
            print("Error in input file: inconsistent name and header in file", i)
            return False
         else:
@@ -72,14 +72,24 @@ def assign(fileNameExperts, fileNameClients):
         filesReading.readHeader(fileNameClients)[2]
     )
 
-    
-for i in tupleClientExpert:
-    filesWriting.addSchedule(
-        DATE,
-        TIME,
-        tupleClientExpert[i][0], #client
-        tupleClientExpert[i][1] #expert
-    )
+  for i in tupleClientExpert:
+        if len(i[1])==1:
+            filesWriting.addSchedule(
+                i[0][2], #data  #como o pedido foi declined a hora\data é igual ao do client
+                i[0][3], #hora
+                i[0][0], #client
+                i[1][0])  #expert
+        else:
+            """ aqui temos de ver qual a data que no fim se vai colocar.
+            Eu por agora vou por a hora do expert"""
+            filesWriting.addSchedule(
+                i[1][5],    
+                i[1][6],
+                i[0][0], #client
+                i[1][0]) #expert
+            
+    return (Schedule)
+
 
 
 #  start of program:
