@@ -85,11 +85,10 @@ def assign(fileNameExperts, fileNameClients):
             filesWriting.addSchedule(
                 i[1][5],    
                 i[1][6],
-                i[0][0], #client
-                i[1][0]) #expert
+                i[0][0], # client
+                i[1][0]) # expert
             
     return (Schedule)
-
 
 
 #  start of program:

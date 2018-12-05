@@ -28,7 +28,7 @@ def addSchedule(date, time, customer, expert):
     Requires: date is str in YYYY-MM-DD format
     Requires: time is str in HH:MM format
     Requires: customer is str
-    Requyires: worker is str
+    Requires: worker is str
     Ensures: Adds a new line to the corresponding schedule file with the inputted
     information
     """
