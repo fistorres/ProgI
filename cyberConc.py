@@ -82,6 +82,7 @@ def assign(fileNameExperts, fileNameClients):
         timestamp[1],
         'expert',
         filesReading.readHeader(fileNameClients)[2]
+    )
 
     for i in updatedExperts:
         filesWriting.addExpert(expertsFile, i)
