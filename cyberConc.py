@@ -27,7 +27,7 @@ def checkError(fileNameExperts, fileNameClients):
     # ex:2019y03m20clients12h30.txt = ('2019-02-20', '12:30', 'iCageDoree', 'Clients')   <<< deve dar erro neste exemplo
     for i in sys.argv[1:]:
         if i.replace("y","-").replace("m","-")[0:10] != (filesReading.readHeader(i))[0] or \
-           str(i[10:17]) != lower.filesReading.readHeader(i)[3] or \
+           str(i[10:17]) != filesReading.readHeader(i)[3].lower() or \
            str(i.replace("h",":")[17:22]) != filesReading.readHeader(i)[1]:
            print("Error in input file: inconsistent name and header in file", i)
            return False
