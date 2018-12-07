@@ -58,6 +58,8 @@ def assign(fileNameExperts, fileNameClients):
     tupleClientExpert = atributionalOutput[0]
     updatedExperts = atributionalOutput[1]
 
+    tupleClientExpert = scheduling.sortScheduleOutput(tupleClientExpert)
+
     # Calculates the timestamp of the new file, 30 min
     # after the input file
     timestamp = constants.timeCalculate(
