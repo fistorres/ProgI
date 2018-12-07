@@ -128,6 +128,11 @@ def sortScheduleOutput(schedule):
 
     return sortedSchedule
 
-def sortExpertsOutput(schedule):
-
-    output = sorted(schedule, key=lambda element:)  # THIS FUNCTION IS UNFINISHED
+def sortExpertsOutput(experts):
+    """
+    Takes an unsorted experts list and sorts it according to the project criteria,
+    in the order that will be outputted to the file.
+    Requires: experts as list
+    """
+    output = sorted(experts, key=lambda element:)
+    # THIS FUNCTION IS UNFINISHED
