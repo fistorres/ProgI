@@ -82,14 +82,14 @@ def atribution (client, experts):
     # compara função
     TimeSchedule = CompareTimes(compareCli,compareExp)
 
-    #update da hora e do dia disponivel
+    # update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
     #print(experts[indi][5],"1",client[2],client[0],experts[indi][0])
     experts[indi][5] = newTime[0] #data
     #print(experts[indi][5])
     experts[indi][6] = newTime[1] #hora
 
-    #update do dinheiro acumulado
+    # update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
     
 
@@ -100,7 +100,7 @@ def atribution (client, experts):
 def sortScheduleOutput(schedule):
     declined = []
 
-    #placing the declined in the new list first
+    # placing the declined in the new list first
     for i in schedule:
         if len(i[1]) == 1:
             declined.append(i)
@@ -112,7 +112,7 @@ def sortScheduleOutput(schedule):
     for i in schedule:
         assert len(i[1]) == 8
         
-    schedule = sorted(schedule, key=lambda element: (element[1][5], element[1][6], element[1][0]))
+    schedule = sorted(schedule, key=lambda element: (element[1][5], element[1][6], element[0][0]))
     sortedSchedule = declined + schedule
     print(sortedSchedule)
     return sortedSchedule
