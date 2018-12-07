@@ -3,52 +3,45 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
-import filesReading
 
-def formatExperts(fileName): #final list of experts to itenerate on
+import filesReading
+import datetime
+
+def takeSpaces(listALL):
+    """ """
+    for i in listALL:
+        for j in range(1,len(i)):
+            i[j] = str(i[j]).replace(" ","")
+            
+    return listALL
+
+
+    
+def formatExperts(listexp): #final list of experts to itenerate on
     """ Edits a list of lists of experts. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
     Ensures: ranking and pay as int and earnings as float and the experts areas as a tuple """
-    explist = filesReading.readFile(fileName)
-    for i in explist:
-        i[2] = tuple(i[2].replace(";",",").replace("(","").replace(")","").split(","))
-        i[4] = int(i[4])
-        i[7] = float(i[7])
-    return explist
 
-def formatClients(fileName): #final list of clients to itenerate on
+
+    listexp = takeSpaces(listexp)
+    for i in listexp:
+        i[2] = tuple(i[2].replace(";",",").replace("(","").replace(")","").split(","))
+        i[3] = int(i[3])
+        i[4] = float(i[4])
+        i[7] = float(i[7])
+        
+    return listexp
+
+def formatClients(listcl): #final list of clients to itenerate on
     """Edits a list of lists of clients. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
     Ensures: ranking and pay as int """
-    cllist = filesReading.readFile(fileName)
-    for i in cllist:
-        i[4] = int(i[4])
+    
+    listcl = takeSpaces(listcl)        
+    for i in listcl:
+        i[4] = float(i[4])
         i[5] = int(i[5])
-        i[7] = int(i[7][0])*60 + int(i[7][2:4])
-    return cllist
+        i[7] = int(i[7][0])*60 + int(i[7][2:4])  #horas em minutos
+        
+    return listcl
 
-
-
-
-
-"""
-EXPERTS
-[0] > nome STR
-[1] > cidade STR
-[2] > dominios TUPLE
-[3] > stars INT
-[4] > pay INT
-[5] > data DATETIME
-[6] > hora DATETIME
-[7] > €acumulado INT
-
-CLIENTS
-[0] > nome STR
-[1] > localidade
-[2] > data DATETIME
-[3] > hora DATETIME
-[4] > pay INT
-[5] > estrela INT
-[6] > dominio TUPLE
-[7] > horas contrato I
-"""
