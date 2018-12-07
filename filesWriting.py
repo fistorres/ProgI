@@ -19,8 +19,10 @@ def newFile(date, time, fileType, company):
     fileName = date[0:4]+'y'+date[5:7]+'m'+date[8:10] +\
                fileType + time[0:2]+'h'+time[3:5]+'.txt'
     file = open(fileName, 'w')  # opens a new file in write mode w/ fileName
-    file.writelines(['Day: \n', date, '\n', 'Time: \n', time,':', time[3:],
-                     '\n', 'Company: \n', company, '\n', fileType.capitalize(), ': \n'])
+    file.writelines(['Day: \n', date, '\n',
+                     'Time: \n', time, '\n',
+                     'Company: \n', company, '\n',
+                     fileType.capitalize(), ': \n'])
     file.close()
     return fileName
 
@@ -34,7 +36,7 @@ def addSchedule(fileName, tupleClientExpert):
     information
     """
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    if len(tupleClientExpert[1]) == 1:  #  se o
+    if len(tupleClientExpert[1]) == 1:  #  se o tuplo for declined
         file.write(
             filesReading.readHeader(fileName)[0] + ', ' +
             filesReading.readHeader(fileName)[1] + ', ' +
