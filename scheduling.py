@@ -84,9 +84,9 @@ def atribution (client, experts):
 
     #update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
-    print(experts[indi][5],"1",client[2],client[0],experts[indi][0])
+    #print(experts[indi][5],"1",client[2],client[0],experts[indi][0])
     experts[indi][5] = newTime[0] #data
-    print(experts[indi][5])
+    #print(experts[indi][5])
     experts[indi][6] = newTime[1] #hora
 
     #update do dinheiro acumulado
@@ -108,6 +108,11 @@ def sortScheduleOutput(schedule):
 
     #sorts declined by
     declined = sorted(declined, key=lambda element: (element[0][0]))
-    schedule = sorted(declined, key=lambda element: (element[1][5], element[1][6], element[1][0]))
+    print(schedule[1][1][5],schedule[1][1][0],schedule[1][1][6])
+    for i in schedule:
+        assert len(i[1]) == 8
+        
+    schedule = sorted(schedule, key=lambda element: (element[1][5], element[1][6], element[1][0]))
     sortedSchedule = declined + schedule
+    print(sortedSchedule)
     return sortedSchedule
