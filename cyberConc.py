@@ -72,23 +72,9 @@ def assign(fileNameExperts, fileNameClients):
         filesReading.readHeader(fileNameClients)[2]
     )
 
-  for i in tupleClientExpert:
-        if len(i[1])==1:
-            filesWriting.addSchedule(
-                i[0][2], #data  #como o pedido foi declined a hora\data é igual ao do client
-                i[0][3], #hora
-                i[0][0], #client
-                i[1][0])  #expert
-        else:
-            """ aqui temos de ver qual a data que no fim se vai colocar.
-            Eu por agora vou por a hora do expert"""
-            filesWriting.addSchedule(
-                i[1][5],    
-                i[1][6],
-                i[0][0], # client
-                i[1][0]) # expert
-            
-    return (Schedule)
+    for i in tupleClientExpert:
+        filesWriting.addSchedule(Schedule, i)
+
 
 
 #  start of program:

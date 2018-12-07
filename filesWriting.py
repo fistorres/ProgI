@@ -3,6 +3,8 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+import filesReading
+
 def newFile(date, time, fileType, company):
     """
     Opens a file in write mode and writes the required header in the first lines.
@@ -20,36 +22,42 @@ def newFile(date, time, fileType, company):
     file.writelines(['Day: \n', date, '\n', 'Time: \n', time,':', time[3:],
                      '\n', 'Company: \n', company, '\n', fileType.capitalize(), ': \n'])
     file.close()
+    return fileName
 
 
-def addSchedule(date, time, customer, expert):
+def addSchedule(fileName, tupleClientExpert):
     """
     Opens a schedule file in append mode, adds a new entry, then closes the file
-    Requires: date is str in YYYY-MM-DD format
-    Requires: time is str in HH:MM format
-    Requires: customer is str
-    Requires: worker is str
+    Requires: fileName
+    Requires: tupleClientExpert as tuple
     Ensures: Adds a new line to the corresponding schedule file with the inputted
     information
     """
-    fileName = date[0:4] + 'y' + date[5:7] + 'm' + date[8:10] + \
-               'schedule' + time[0:2] + 'h' + time[3:5] + '.txt'
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    file.write(date + ', ' + time + ', ' +
-               customer + ', ' + expert)
-    file.close()
+    if len(tupleClientExpert[1]) != 1:  #  se o
+        file.write(
+            filesReading.readHeader(fileName)[0] + ', ' +
+            filesReading.readHeader(fileName)[1] + ', ' +
+            tupleClientExpert[0][0] + ', ' +
+            tupleClientExpert[1][0] + '\n'
+        )
+    else:
+        file.write(
+            tupleClientExpert[1][5] + ', ' +
+            tupleClientExpert[1][6] + ', ' +
+            tupleClientExpert[0][0] + ', ' +
+            tupleClientExpert[1][0] + '\n'
+        )
+        file.close()
 
-def addExpert(date, time, expert):
+def addExpert(fileName, expert):
     """
     Adds an expert to a experts file from a specific date and time
     Requires: expert is a list
-    Requires: date is str in YYYY-DD-MM format
-    Requires: time is str in HH:MM format
+    Requires: fileName as str
     Ensures: The expert information is appended to a file from a specific date and
     time
     """
-    fileName = date[0:4] + 'y' + date[5:7] + 'm' + date[8:10] + \
-               'experts' + time[0:2] + 'h' + time[3:5] + '.txt'
     file=open(fileName,'a')  # opens the corresponding file in append mode
 
     # writes the expert information, as well as the corresponding time
@@ -59,7 +67,8 @@ def addExpert(date, time, expert):
         str(expert[2]) + ', ' +
         str(expert[3]) + '*, ' +
         str(expert[4]) + ', ' +
-        str(time)[0:2] + ':' + time[3:5] + ', ' +
-        str(expert[6])
+        str(expert[5] + ', '
+        str(expert[6]) + ', ' +
+        str(expert[7]) + '\n'
     )
     file.close()
