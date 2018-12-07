@@ -54,7 +54,9 @@ def assign(fileNameExperts, fileNameClients):
     formatedexp = formated.formatExperts(rawexp)
     formatedcli = formated.formatClients(rawcl)
 
-    tupleClientExpert = scheduling.atributional(formatedcli,formatedexp)
+    atributionalOutput = scheduling.atributional(formatedcli,formatedexp)
+    tupleClientExpert = atributionalOutput[0]
+    updatedExperts = atributionalOutput[1]
 
     # Calculates the timestamp of the new file, 30 min
     # after the input file
@@ -65,7 +67,7 @@ def assign(fileNameExperts, fileNameClients):
     )
 
     # Creates a new file for the schedule
-    Schedule = filesWriting.newFile(
+    scheduleFile = filesWriting.newFile(
         timestamp[0],
         timestamp[1], 
         'schedule',
@@ -73,8 +75,16 @@ def assign(fileNameExperts, fileNameClients):
     )
 
     for i in tupleClientExpert:
-        filesWriting.addSchedule(Schedule, i)
+        filesWriting.addSchedule(scheduleFile, i)
 
+    expertsFile = filesWriting.newFile(
+        timestamp[0],
+        timestamp[1],
+        'expert',
+        filesReading.readHeader(fileNameClients)[2]
+
+    for i in updatedExperts:
+        filesWriting.addExpert(expertsFile, i)
 
 
 #  start of program:

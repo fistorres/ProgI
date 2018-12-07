@@ -2,7 +2,6 @@
 This is my debugging script - it is not to be submitted for evaluation
 -Gil
 """
-import datetime
 import filesWriting
 import scheduling
 import filesReading

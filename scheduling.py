@@ -41,7 +41,7 @@ def atributional(clients,experts):
         print(expr)
         tup = tup + [(i,expr),]
         #print(tup)
-    return tup
+    return (tup,experts)
 
 
 

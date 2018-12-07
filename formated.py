@@ -4,8 +4,6 @@
 # 49269 Mário Gil Oliveira
 
 import filesReading
-import datetime
-
 
 def formatExperts(fileName): #final list of experts to itenerate on
     """ Edits a list of lists of experts. Changes elements from str to another type better suited.
