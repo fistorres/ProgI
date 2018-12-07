@@ -97,3 +97,17 @@ def atribution (client, experts):
     return (experts[indi],experts)
 
 
+def sortScheduleOutput(schedule):
+    declined = []
+
+    #placing the declined in the new list first
+    for i in schedule:
+        if len(i)[1] == 1:
+            declined.append(i)
+            schedule.remove(i)
+
+    #sorts declined by
+    declined = sorted(declined, key=lambda element: (element[0][0]))
+    schedule = sorted(declined, key=lambda element: (element[1][5], element[1][6], element[1][0]))
+    sortedSchedule = declined + schedule
+    return sortedSchedule
