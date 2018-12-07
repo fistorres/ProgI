@@ -5,6 +5,7 @@
 
 from operator import itemgetter
 import constants
+import copy
 
 def CompareTimes(timeCli,timeExp):
     """ Compares time and date of clients and Experts and returns the latest(???)
@@ -36,12 +37,13 @@ def atributional(clients,experts):
     """
     tup = []
     for i in clients:
-        #print(i[0])
-        expr = atribution(i,experts)[0]
-     #   print(expr)
-        tup = tup + [(i,expr),]
-        #print(tup)
-    return (tup,experts)
+        exp = atribution(i,experts)
+        if len(exp) > 2:
+            tup = tup + [(i,exp[0],exp[2],exp[3]),]
+        else:
+            tup = tup + [(i,exp[0]),]
+
+     return (tup,experts)
 
 
 
@@ -60,8 +62,14 @@ def atribution (client, experts):
     according to the project.
     An empty list means a match isn't possible
     """
+    expertshour =copy.deepcopy(experts)
+    for i in expertshour:
+        #print(constants.timeCalculate(i[5],i[6],60))
+        i[5] = constants.timeCalculate(i[5],i[6],60)[0]
+        i[6] = constants.timeCalculate(i[5],i[6],60)[1]
+    
     compatibleExperts = []
-    for i in experts:
+    for i in expertshour:
         if client[6] in i[2] and i[3] >= client[5] and \
            i[4] <= client[4] and i[1] == client[1]:
             compatibleExperts.append(i)
@@ -94,7 +102,7 @@ def atribution (client, experts):
     
 
     
-    return (experts[indi],experts)
+    return (experts[indi],expertscompatibleExperts[0][5],compatibleExperts[0][6])
 
 
 def sortScheduleOutput(schedule):
