@@ -67,7 +67,7 @@ def addExpert(fileName, expert):
         str(expert[2]) + ', ' +
         str(expert[3]) + '*, ' +
         str(expert[4]) + ', ' +
-        str(expert[5] + ', '
+        str(expert[5]) + ', '
         str(expert[6]) + ', ' +
         str(expert[7]) + '\n'
     )
