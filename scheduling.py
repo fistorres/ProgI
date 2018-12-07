@@ -102,7 +102,7 @@ def sortScheduleOutput(schedule):
 
     #placing the declined in the new list first
     for i in schedule:
-        if len(i)[1] == 1:
+        if len(i[1]) == 1:
             declined.append(i)
             schedule.remove(i)
 
