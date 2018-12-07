@@ -38,7 +38,7 @@ def atributional(clients,experts):
     for i in clients:
         #print(i[0])
         expr = atribution(i,experts)[0]
-        print(expr)
+     #   print(expr)
         tup = tup + [(i,expr),]
         #print(tup)
     return (tup,experts)
@@ -84,17 +84,16 @@ def atribution (client, experts):
 
     #update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
+    print(experts[indi][5],"1",client[2],client[0],experts[indi][0])
     experts[indi][5] = newTime[0] #data
-    print(experts[indi][5],client[0],experts[indi][0])
+    print(experts[indi][5])
     experts[indi][6] = newTime[1] #hora
 
     #update do dinheiro acumulado
-    experts[indi][7] = experts[indi][7] + client[4]*client[7]
+    experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
     
 
     
     return (experts[indi],experts)
-
-
 
 
