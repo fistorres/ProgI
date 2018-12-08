@@ -33,7 +33,7 @@ def atributional(clients,experts):
     Requires: clients as list
     Requires: experts as list
     Ensures: a list in the following format
-    (client name, expert name)
+    (client name, expert name) <- NOT CORRECT. NEEDS FIXING.
     """
     tup = []
     for i in clients:
@@ -142,5 +142,6 @@ def sortExpertsOutput(experts):
     in the order that will be outputted to the file.
     Requires: experts as list
     """
-    output = sorted(experts, key=lambda element:)
-    # THIS FUNCTION IS UNFINISHED
+    #sorting by date, then time
+    output = sorted(experts, key=lambda element: (element[2], element[3]))
+    return output
