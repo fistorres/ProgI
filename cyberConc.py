@@ -23,7 +23,7 @@ def checkError(fileNameExperts, fileNameClients):
               fileNameExperts,"and",fileNameExperts)
         return False
 
-    # testar se cabeçalho é igual ao nome do ficheiro
+    # tests if the header matches the file name
     # ex:2019y03m20clients12h30.txt = ('2019-02-20', '12:30', 'iCageDoree', 'Clients')   <<< deve dar erro neste exemplo
     for i in sys.argv[1:]:
         if i.replace("y","-").replace("m","-")[0:10] != (filesReading.readHeader(i))[0] or \
@@ -84,7 +84,7 @@ def assign(fileNameExperts, fileNameClients):
     expertsFile = filesWriting.newFile(
         timestamp[0],
         timestamp[1],
-        'expert',
+        'experts',
         filesReading.readHeader(fileNameClients)[2]
     )
 
