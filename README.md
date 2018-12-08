@@ -1,7 +1,24 @@
 # prog1
 Projeto de Prog1
 
-Eu adcionei os ficheiros de teste porque sou noob e não sei abri-los separadamente no pycharm :| 
-Apaga a pasta pls
+Guia para perecber as listas:
 
-Okay!! Btw vou apagar os ficheiros de teste todos porque não me estão a deixar fazer push
+experts:
+[0] name
+[1] city
+[2] skills
+[3] rating
+[4] pay
+[5] date
+[6] time
+[7] total amount
+
+clients:
+[0] nome
+[1] city
+[2] date
+[3] time
+[4] maxprice
+[5] minrating
+[6] skills
+[7] duration
