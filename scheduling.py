@@ -83,10 +83,6 @@ def atribution (client, experts):
     if len(compatibleExperts) == 0:
         return (["declined",],experts)
 
-    """for i in range(len(experts)):
-            print(expertshour[i],experts[i])"""
-
-
             
     # buscar indice do expert sorteado
     indi = expertshour.index(compatibleExperts[0])
@@ -100,9 +96,6 @@ def atribution (client, experts):
     # compara função
     TimeSchedule = CompareTimes(compareCli,compareExp)
 
-    if client[0] == "Marius Sigorvius" or client[0] == "Eric Laporte":
-        print(TimeSchedule,client[0])
-
     # update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
     experts[indi][5] = newTime[0] #data
@@ -110,9 +103,6 @@ def atribution (client, experts):
 
     # update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
-
-    if client[0] == "Marius Sigorvius" or client[0] == "Eric Laporte":
-        print("!!!",compatibleExperts[0][6],client[0],"\n")
 
     
     #faz return do expert,data do schedule,hora do schedule, e da lista experts atualizada    
