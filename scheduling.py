@@ -44,7 +44,6 @@ def atributional(clients,experts):
         else:
             tup = tup + [(i[0],exp[0][0]),]
 
-        print(tup)
     return (tup,experts)
 
 
@@ -63,8 +62,9 @@ def atribution (client, experts):
 
     
     expertshour = copy.deepcopy(experts)
+    
     for i in expertshour:
-        #print(constants.timeCalculate(i[5],i[6],60))
+      #  print(constants.timeCalculate(i[5],i[6],60),i[0])
         i[5] = constants.timeCalculate(i[5],i[6],60)[0]
         i[6] = constants.timeCalculate(i[5],i[6],60)[1]
 
@@ -77,6 +77,7 @@ def atribution (client, experts):
     compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
     # compatibleExperts[0] >> WINNER
+
     
     if len(compatibleExperts) == 0:
         return (["declined",],experts)
@@ -106,7 +107,7 @@ def atribution (client, experts):
     # update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
 
-
+    
     #faz return do expert,data do schedule,hora do schedule, e da lista experts atualizada    
     return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
 
@@ -120,22 +121,27 @@ def sortScheduleOutput(schedule):
     specified in the project
     """
     declined = []
+    #print(schedule)
 
     # placing the declined in the new list first
     for i in schedule:
-        if len(i[1]) == 1:
+        if len(i) == 2:
             declined.append(i)
             schedule.remove(i)
 
+            
+        #print(i,i[0],i[2],i[3])
+
     # sorts declined in alphabetical order
-    declined = sorted(declined, key=lambda element: (element[0]))
+    declined = sorted(declined, key=itemgetter(0))
     
         
     # sorts the scheduled appointments
-    schedule = sorted(schedule, key=lambda element: (element[2], element[3], element[0]))
+    schedule = sorted(schedule, key=itemgetter(2,3,0))
 
     # merging the two lists, making sure the declined requests go first
     sortedSchedule = declined + schedule
+
 
     return sortedSchedule
 
