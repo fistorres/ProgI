@@ -45,8 +45,7 @@ def atributional(clients,experts):
             tup = tup + [(i[0],exp[0][0]),]
 
         print(tup)
-
-        return (tup,experts)
+    return (tup,experts)
 
 
 #    return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
