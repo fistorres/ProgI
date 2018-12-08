@@ -7,6 +7,7 @@ from operator import itemgetter
 import constants
 import copy
 
+
 def CompareTimes(timeCli,timeExp):
     """ Compares time and date of clients and Experts and returns the latest(???)
     Requires: timeCli and timeExp as a tuple, first element being date as str
@@ -33,24 +34,22 @@ def atributional(clients,experts):
     Requires: clients as list
     Requires: experts as list
     Ensures: a list in the following format
-    (client name, expert name) <- NOT CORRECT. NEEDS FIXING.
+    (client name, expert name)
     """
     tup = []
     for i in clients:
         exp = atribution(i,experts)
-        if len(exp) > 2:
-            tup = tup + [(i,exp[0],exp[2],exp[3]),]
+        if len(exp[0]) > 1:
+            tup = tup + [(i[0],exp[0][0],exp[1],exp[2]),]
         else:
-            tup = tup + [(i,exp[0]),]
+            tup = tup + [(i[0],exp[0][0]),]
 
-    return (tup,experts)
+        print(tup)
 
-
-
-#tup[0][0] > nome do cliente
-#tup[0][1][0] > nome do expert
+        return (tup,experts)
 
 
+#    return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
 
 def atribution (client, experts):
     """
@@ -62,12 +61,14 @@ def atribution (client, experts):
     according to the project.
     An empty list means a match isn't possible
     """
-    expertshour =copy.deepcopy(experts)
+
+    
+    expertshour = copy.deepcopy(experts)
     for i in expertshour:
         #print(constants.timeCalculate(i[5],i[6],60))
         i[5] = constants.timeCalculate(i[5],i[6],60)[0]
         i[6] = constants.timeCalculate(i[5],i[6],60)[1]
-    
+
     compatibleExperts = []
     for i in expertshour:
         if client[6] in i[2] and i[3] >= client[5] and \
@@ -76,12 +77,20 @@ def atribution (client, experts):
 
     compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
-
+    # compatibleExperts[0] >> WINNER
+    
     if len(compatibleExperts) == 0:
         return (["declined",],experts)
-    
+
+    """for i in range(len(experts)):
+            print(expertshour[i],experts[i])"""
+
+
+            
     # buscar indice do expert sorteado
-    indi = experts.index(compatibleExperts[0])
+    indi = expertshour.index(compatibleExperts[0])
+    # alterar apenas o expert selecionado para a hora extra
+    experts[indi] = compatibleExperts[0]
 
 
     # tuplo com (data,hora) do client e exp para compara-los
@@ -92,17 +101,15 @@ def atribution (client, experts):
 
     # update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
-    #print(experts[indi][5],"1",client[2],client[0],experts[indi][0])
     experts[indi][5] = newTime[0] #data
-    #print(experts[indi][5])
     experts[indi][6] = newTime[1] #hora
 
     # update do dinheiro acumulado
     experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
-    
 
-    
-    return (experts[indi],expertscompatibleExperts[0][5],compatibleExperts[0][6])
+
+    #faz return do expert,data do schedule,hora do schedule, e da lista experts atualizada    
+    return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
 
 
 def sortScheduleOutput(schedule):
@@ -122,27 +129,24 @@ def sortScheduleOutput(schedule):
             schedule.remove(i)
 
     # sorts declined in alphabetical order
-    declined = sorted(declined, key=lambda element: (element[0][0]))
-    print(schedule[1][1][5],schedule[1][1][0],schedule[1][1][6])  # DEBUG DELETE BEFORE DELIVERY
-    for i in schedule:
-        assert len(i[1]) == 8
-
+    declined = sorted(declined, key=lambda element: (element[0]))
+    
+        
     # sorts the scheduled appointments
-    schedule = sorted(schedule, key=lambda element: (element[1][5], element[1][6], element[0][0]))
+    schedule = sorted(schedule, key=lambda element: (element[2], element[3], element[0]))
 
     # merging the two lists, making sure the declined requests go first
     sortedSchedule = declined + schedule
-    print(sortedSchedule)   # DEBUG DELETE BEFORE DELIVERY
 
     return sortedSchedule
 
 def sortExpertsOutput(experts):
-    """
+     """
     Takes an unsorted experts list and sorts it according to the project criteria,
     in the order that will be outputted to the file.
     Requires: experts as list
     Ensures: an experts list sorted by their availability
     """
-    #sorting by date, then time
-    output = sorted(experts, key=lambda element: (element[2], element[3]))
-    return output
+     #sorting by date, then time
+     output = sorted(experts, key=lambda element: (element[2], element[3]))
+     return output
