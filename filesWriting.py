@@ -19,10 +19,8 @@ def newFile(date, time, fileType, company):
     fileName = date[0:4]+'y'+date[5:7]+'m'+date[8:10] +\
                fileType + time[0:2]+'h'+time[3:5]+'.txt'
     file = open(fileName, 'w')  # opens a new file in write mode w/ fileName
-    file.writelines(['Day: \n', date, '\n',
-                     'Time: \n', time, '\n',
-                     'Company: \n', company, '\n',
-                     fileType.capitalize(), ': \n'])
+    file.writelines(['Day: \n', date, '\n', 'Time: \n', time,
+                     '\n', 'Company: \n', company, '\n', fileType.capitalize(), ': \n'])
     file.close()
     return fileName
 
@@ -36,19 +34,19 @@ def addSchedule(fileName, tupleClientExpert):
     information
     """
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    if len(tupleClientExpert[1]) == 1:  #  se o tuplo for declined
+    if len(tupleClientExpert[1]) == 1:  #  se tiver sido declined
         file.write(
             filesReading.readHeader(fileName)[0] + ', ' +
             filesReading.readHeader(fileName)[1] + ', ' +
-            tupleClientExpert[0][0] + ', ' +
-            tupleClientExpert[1][0] + '\n'
+            tupleClientExpert[0] + ', ' +
+            tupleClientExpert[1] + '\n'
         )
     else:
         file.write(
-            tupleClientExpert[1][5] + ', ' +
-            tupleClientExpert[1][6] + ', ' +
-            tupleClientExpert[0][0] + ', ' +
-            tupleClientExpert[1][0] + '\n'
+            tupleClientExpert[2] + ', ' +
+            tupleClientExpert[3] + ', ' +
+            tupleClientExpert[0] + ', ' +
+            tupleClientExpert[1] + '\n'
         )
         file.close()
 
