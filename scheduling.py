@@ -141,6 +141,7 @@ def sortExpertsOutput(experts):
     Takes an unsorted experts list and sorts it according to the project criteria,
     in the order that will be outputted to the file.
     Requires: experts as list
+    Ensures: an experts list sorted by their availability
     """
     #sorting by date, then time
     output = sorted(experts, key=lambda element: (element[2], element[3]))
