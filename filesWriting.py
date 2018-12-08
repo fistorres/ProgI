@@ -34,7 +34,7 @@ def addSchedule(fileName, tupleClientExpert):
     information
     """
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    if len(tupleClientExpert[1]) == 1:  #  se tiver sido declined
+    if len(tupleClientExpert) == 2:  #  se tiver sido declined
         file.write(
             filesReading.readHeader(fileName)[0] + ', ' +
             filesReading.readHeader(fileName)[1] + ', ' +
@@ -42,6 +42,7 @@ def addSchedule(fileName, tupleClientExpert):
             tupleClientExpert[1] + '\n'
         )
     else:
+        print(tupleClientExpert)
         file.write(
             tupleClientExpert[2] + ', ' +
             tupleClientExpert[3] + ', ' +
