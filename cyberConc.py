@@ -13,15 +13,21 @@ import constants
 
 
 def checkError(fileNameExperts, fileNameClients):
-    """ """
+    """Checks to see if the inputFiles are valid. Checks if the headers of the experts and
+    clients files are equal and if the header of a file matches it's name
+    Requires: fileNameExperts, fileNameClients are str, with the names
+    of the files representing the list of experts and clients, respectively,
+    following the format indicated in the project.
+    Ensures: return True if the files are valid and False if not"""
 
     # Testar se os cabeçalhos são correspondentes entre Client e Expert
     headExp = filesReading.readHeader(fileNameExperts) 
     headCli = filesReading.readHeader(fileNameClients)
     if headCli[0:3] != headExp[0:3]:
         print("Error in input files: inconsistent files",
-              fileNameExperts,"and",fileNameExperts)
+              fileNameExperts,"and",fileNameClients)
         return False
+
 
     # tests if the header matches the file name
     # ex:2019y03m20clients12h30.txt = ('2019-02-20', '12:30', 'iCageDoree', 'Clients')   <<< deve dar erro neste exemplo
@@ -32,7 +38,6 @@ def checkError(fileNameExperts, fileNameClients):
            print("Error in input file: inconsistent name and header in file", i)
            return False
         else:
-            print("Yupi")
             return True
 
 
@@ -58,9 +63,7 @@ def assign(fileNameExperts, fileNameClients):
     tupleClientExpert = atributionalOutput[0]
     updatedExperts = atributionalOutput[1]
 
-    # Sorting outputs according to project specifications
     tupleClientExpert = scheduling.sortScheduleOutput(tupleClientExpert)
-    updatedExperts = scheduling.sortExpertsOutput(updatedExperts)
 
     # Calculates the timestamp of the new file, 30 min
     # after the input file
@@ -79,6 +82,7 @@ def assign(fileNameExperts, fileNameClients):
     )
 
     for i in tupleClientExpert:
+       # print(i)
         filesWriting.addSchedule(scheduleFile, i)
 
     expertsFile = filesWriting.newFile(
@@ -98,15 +102,6 @@ inputExperts, inputClients = sys.argv[1:]
 
 if checkError(inputExperts, inputClients):
     assign(inputExperts, inputClients)
-
-
-
-
-
-
-
-
-
 
 
 
