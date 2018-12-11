@@ -65,7 +65,7 @@ def addExpert(fileName, expert):
     file.write(
         str(expert[0]) + ', ' +
         str(expert[1]) + ', ' +
-        str(expert[2]) + ', ' +
+        str(expert[2]).replace("'","").replace(',',';') + ', ' +
         str(expert[3]) + '*, ' +
         str(expert[4]) + ', ' +
         str(expert[5]) + ', ' +
