@@ -71,3 +71,35 @@ def convertTime (inTime):
     """
 
     return int(inTime[3:]) + 60*int(inTime[0:2])
+
+def travelTime (inDate, inTime):
+    """
+    Adds one hour of travel to an inputed time, if there's no time until the end of the working day,
+    it returns the start of the next day.
+    Requires: inDate as str in YYYY-MM-DD format
+    Requires: inTime as str in HH:MM format
+    Ensures: a tuple of 2 str (date, time) of arrival
+    """
+    # converts time into a tuple of int (h, m)
+    time = (int(inTime[0:2]), int(inTime[3:]))
+
+    # converts date into a tuple of int (y, m, d)
+    date = (int(inDate[0:4]), int(inDate[5:7]), int(inDate[8:]))
+
+    day = int(date[2])
+    month = int(date[1])
+    year = int(date[0])
+
+    if time[1] >= 19:
+        if month == 12 and day == 30:
+            return (
+                str(year + 1) + '-01-01',
+                str('08:00')
+            )
+        elif day == 30:
+            return (
+                str(year + 1) + '-' + formatNumber(month+1) + '-01',
+                str('08:00')
+            )
+    else:
+        return timeCalculate(inDate, inTime, 60)
