@@ -32,6 +32,7 @@ def readFile(fileName):
 
     return outputList
 
+
 def readHeader(fileName):
     """
     Converts a given file listing experts or clients and returns day, time,

@@ -13,7 +13,8 @@ def takeSpaces(listALL):
     Requires: listALL as list 
     Ensures: listALL with no unnecessary spaces
     """
-    #range starts at 1 because we don't want to eleminate the spaces of the names
+    # range starts at 1 because we don't want to eliminate
+    # the spaces between the person's name
     for i in listALL:
         for j in range(1,len(i)):
             i[j] = str(i[j]).replace(" ","")
@@ -21,14 +22,12 @@ def takeSpaces(listALL):
     return listALL
 
 
-    
-def formatExperts(listexp): # final list of experts to itenerate on
+def formatExperts(listexp): # final list of experts to iterate on
     """
     Edits a list of lists of experts. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
     Ensures: ranking and pay as int and earnings as float and the experts areas as a tuple
     """
-
 
     listexp = takeSpaces(listexp)
     for i in listexp:
