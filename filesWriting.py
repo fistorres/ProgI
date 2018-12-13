@@ -65,11 +65,17 @@ def addExpert(fileName, expert):
     file = open(fileName,'a')  # opens the corresponding file in append mode
 
     # writes the expert information, as well as the corresponding time
+
+    if len(expert[2]) == 1:
+        experties = str(expert[2]).replace("'","").replace(',',"")
+    else:
+        experties = str(expert[2]).replace("'","").replace(',',';') 
+
     
     file.write(
         str(expert[0]) + ', ' +
         str(expert[1]) + ', ' +
-        str(expert[2]).replace("'","").replace(',',';') + ', ' +
+        experties + ', ' +
         str(expert[3]) + '*, ' +
         str(expert[4]) + ', ' +
         str(expert[5]) + ', ' +

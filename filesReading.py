@@ -19,7 +19,8 @@ def readFile(fileName):
     lenfile = len(filetwo.readlines())
     
     outputList = []
-    
+
+    # header always has 7 lines
     i = 0
     while i < 7:
         fileIn.readline()
@@ -38,8 +39,7 @@ def readHeader(fileName):
     company as variables.
     Requires : fileName is str, the name of a .txt file listing experts,
     following the format specified in the project.
-    Ensures: a tuple of company,day and time as str
-    """
+    Ensures: a tuple of company,day and time as str"""
 
     fileIn = open(fileName, 'r')
 
