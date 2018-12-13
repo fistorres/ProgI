@@ -8,10 +8,9 @@
 import sys
 import filesReading
 import formated
-import constants
 import filesWriting
 import scheduling
-import constants
+import timeOperations
 
 
 def checkError(fileNameExperts, fileNameClients):
@@ -70,7 +69,7 @@ def assign(fileNameExperts, fileNameClients):
 
     # Calculates the timestamp of the new file, 30 min
     # after the input file
-    timestamp = constants.timeCalculate(
+    timestamp = timeOperations.timeCalculate(
         filesReading.readHeader(fileNameExperts)[0],
         filesReading.readHeader(fileNameExperts)[1],
         30  # time increment from input file

@@ -6,7 +6,7 @@
 # 49269 Mário Gil Oliveira
 
 from operator import itemgetter
-import constants
+import timeOperations
 import copy
 
 
@@ -48,8 +48,8 @@ def atribution (client, experts):
     expertshour = copy.deepcopy(experts)
     
     for i in expertshour:
-        i[5] = constants.travelTime(i[5],i[6])[0]
-        i[6] = constants.travelTime(i[5],i[6])[1]
+        i[5] = timeOperations.travelTime(i[5],i[6])[0]
+        i[6] = timeOperations.travelTime(i[5],i[6])[1]
 
     compatibleExperts = []
     for i in expertshour:
@@ -81,7 +81,7 @@ def atribution (client, experts):
 
 
     # update da hora e do dia disponivel
-    newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
+    newTime = timeOperations.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
     experts[indi][5] = newTime[0] #data
     experts[indi][6] = newTime[1] #hora
 
