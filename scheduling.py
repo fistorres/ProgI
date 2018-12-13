@@ -101,7 +101,6 @@ def sortScheduleOutput(schedule):
     specified in the project
     """
     declined = []
-    #print(schedule)
 
     # placing the declined in the new list first
     for i in schedule:

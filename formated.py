@@ -5,6 +5,7 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+from constants import hourMinutes
 
 def takeSpaces(listALL):
     """
@@ -21,10 +22,12 @@ def takeSpaces(listALL):
 
 
     
-def formatExperts(listexp): #final list of experts to itenerate on
-    """ Edits a list of lists of experts. Changes elements from str to another type better suited.
+def formatExperts(listexp): # final list of experts to itenerate on
+    """
+    Edits a list of lists of experts. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures: ranking and pay as int and earnings as float and the experts areas as a tuple """
+    Ensures: ranking and pay as int and earnings as float and the experts areas as a tuple
+    """
 
 
     listexp = takeSpaces(listexp)
@@ -36,16 +39,18 @@ def formatExperts(listexp): #final list of experts to itenerate on
         
     return listexp
 
-def formatClients(listcl): #final list of clients to itenerate on
-    """Edits a list of lists of clients. Changes elements from str to another type better suited.
+def formatClients(listcl): # final list of clients to itenerate on
+    """
+    Edits a list of lists of clients. Changes elements from str to another type better suited.
     Requires: fileName is str, the name of a .txt file listing experts,
-    Ensures: ranking and pay as int """
+    Ensures: ranking and pay as int
+    """
     
     listcl = takeSpaces(listcl)        
     for i in listcl:
         i[4] = int(i[4])
         i[5] = int(i[5])
-        i[7] = int(i[7][0])*60 + int(i[7][2:4])  # hours in minutes
+        i[7] = int(i[7][0])*hourMinutes + int(i[7][2:4])  # hours in minutes
         
     return listcl
 
