@@ -58,18 +58,23 @@ def assign(fileNameExperts, fileNameClients):
     rawexp = filesReading.readFile(fileNameExperts)
     rawcl = filesReading.readFile(fileNameClients)
 
+    # Formats the file content into lists for usage
     formatedexp = formated.formatExperts(rawexp)
     formatedcli = formated.formatClients(rawcl)
 
+    # schedules the jobs and matches the clients and experts into a tuple
     atributionalOutput = scheduling.atributional(formatedcli,formatedexp)
     tupleClientExpert = atributionalOutput[0]
+
+    # updates the Experts list based on the attributions
     updatedExperts = atributionalOutput[1]
 
+    # sorts the lists in the order to be written in the file
     tupleClientExpert = scheduling.sortScheduleOutput(tupleClientExpert)
     updatedExperts = scheduling.sortExpertsOutput(updatedExperts)
 
-    # Calculates the timestamp of the new file, 30 min
-    # after the input file
+    # Calculates the timestamp of the new file,
+    # based on the amount of minutes in outputIncrement
     timestamp = timeOperations.timeCalculate(
         filesReading.readHeader(fileNameExperts)[0],
         filesReading.readHeader(fileNameExperts)[1],
@@ -84,9 +89,11 @@ def assign(fileNameExperts, fileNameClients):
         filesReading.readHeader(fileNameClients)[2]
     )
 
+    # Appends each schedule entry into the file
     for i in tupleClientExpert:
         filesWriting.addSchedule(scheduleFile, i)
 
+    # Creates a new experts file
     expertsFile = filesWriting.newFile(
         timestamp[0],
         timestamp[1],
@@ -94,11 +101,12 @@ def assign(fileNameExperts, fileNameClients):
         filesReading.readHeader(fileNameClients)[2]
     )
 
+    # Appends each of the experts into the output experts file
     for i in updatedExperts:
         filesWriting.addExpert(expertsFile, i)
 
 
-#  PROGRAM STARTS HERE:
+# PROGRAM STARTS RUNNING HERE:
 
 inputExperts, inputClients = sys.argv[1:]
 
