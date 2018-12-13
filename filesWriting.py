@@ -36,7 +36,7 @@ def addSchedule(fileName, tupleClientExpert):
     information
     """
     file = open(fileName, 'a')  # opens the corresponding file in append mode
-    if len(tupleClientExpert) == 2:  #  se tiver sido declined
+    if len(tupleClientExpert) == 2:  # if it has been declined
         file.write(
             filesReading.readHeader(fileName)[0] + ', ' +
             filesReading.readHeader(fileName)[1] + ', ' +
@@ -60,7 +60,7 @@ def addExpert(fileName, expert):
     Ensures: The expert information is appended to a file from a specific date and
     time
     """
-    file=open(fileName,'a')  # opens the corresponding file in append mode
+    file = open(fileName,'a')  # opens the corresponding file in append mode
 
     # writes the expert information, as well as the corresponding time
 

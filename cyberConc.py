@@ -22,7 +22,7 @@ def checkError(fileNameExperts, fileNameClients):
     following the format indicated in the project.
     Ensures: return True if the files are valid and False if not"""
 
-    # Testar se os cabeçalhos são correspondentes entre Client e Expert
+    # Tests if the clients match between Client and Expert
     headExp = filesReading.readHeader(fileNameExperts)
     headCli = filesReading.readHeader(fileNameClients)
     if headCli[0:3] != headExp[0:3]:
@@ -98,7 +98,7 @@ def assign(fileNameExperts, fileNameClients):
         filesWriting.addExpert(expertsFile, i)
 
 
-#  start of program:
+#  PROGRAM STARTS HERE:
 
 inputExperts, inputClients = sys.argv[1:]
 
