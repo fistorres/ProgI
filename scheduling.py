@@ -100,7 +100,7 @@ def atribution (client, experts):
     experts[indi][6] = newTime[1] #hora
 
     # update do dinheiro acumulado
-    experts[indi][7] = experts[indi][7] + (client[4]*client[7])/60
+    experts[indi][7] = experts[indi][7] + (experts[indi][4]*client[7])/60
 
     
     #faz return do expert,data do schedule,hora do schedule, e da lista experts atualizada    
