@@ -57,6 +57,7 @@ def assign(fileNameExperts, fileNameClients):
     rawcl = filesReading.readFile(fileNameClients)
 
     formatedexp = formated.formatExperts(rawexp)
+    print(formatedexp)
     formatedcli = formated.formatClients(rawcl)
 
     atributionalOutput = scheduling.atributional(formatedcli,formatedexp)

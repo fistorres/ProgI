@@ -24,7 +24,7 @@ def readFile(fileName):
 
     i = 0
     while i < lenfile-7:
-        outputList.append(fileIn.readline().replace("*","").replace(" ","").replace("\n", "").split(","))
+        outputList.append(fileIn.readline().replace("*","").replace("\n", "").split(","))
         i = i+1
 
     return outputList
