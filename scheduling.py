@@ -10,24 +10,6 @@ import constants
 import copy
 
 
-def CompareTimes(timeCli,timeExp):
-    """ Compares time and date of clients and Experts and returns the latest(???)
-    Requires: timeCli and timeExp as a tuple, first element being date as str
-    in YYYY-MM-DD format, and the second element being time as str in "HH:MM" format
-    Ensures: tuple in the same format with the latest date
-    """
-    # ("2019-03-14","14:45") ("2018-03-15","16:36")
-
-    Cli = "".join(timeCli).replace("-","").replace(":","")
-    Exp = "".join(timeExp).replace("-","").replace(":","")
-
-    if int(Cli) >= int(Exp):
-        
-        return timeCli
-    else:
-        return timeExp
-
-
 
 def atributional(clients,experts):
     """
@@ -93,8 +75,10 @@ def atribution (client, experts):
     # tuplo com (data,hora) do client e exp para compara-los
     compareCli = (client[2],client[3])
     compareExp = (compatibleExperts[0][5],compatibleExperts[0][6])
+    listaCliExp = (compareCli,compareExp)
     # compara função
-    TimeSchedule = CompareTimes(compareCli,compareExp)
+    TimeSchedule = sorted(listaCliExp, key=lambda element: (element[0], element[1]))[1]
+
 
     # update da hora e do dia disponivel
     newTime = constants.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
