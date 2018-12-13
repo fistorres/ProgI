@@ -5,6 +5,7 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+
 def formatNumber(x):
     """
     Converts an int to a str and adds a 0 before if < 10

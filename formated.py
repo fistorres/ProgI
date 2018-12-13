@@ -6,9 +6,6 @@
 # 49269 Mário Gil Oliveira
 
 
-import filesReading
-import datetime
-
 def takeSpaces(listALL):
     """
     Edits a list of clients or experts and takes all the unnecessary blank spaces

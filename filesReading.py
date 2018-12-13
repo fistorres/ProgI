@@ -5,6 +5,7 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+
 def readFile(fileName):
     """
     Converts a given file listing experts or clients into a collection
