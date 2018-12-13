@@ -42,7 +42,6 @@ def addSchedule(fileName, tupleClientExpert):
             tupleClientExpert[1] + '\n'
         )
     else:
-        print(tupleClientExpert)
         file.write(
             tupleClientExpert[2] + ', ' +
             tupleClientExpert[3] + ', ' +
