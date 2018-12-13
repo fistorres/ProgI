@@ -43,7 +43,6 @@ def atributional(clients,experts):
             tup = tup + [(i[0],exp[0][0],exp[1],exp[2]),]
         else:
             tup = tup + [(i[0],exp[0][0]),]
-    print(tup)
 
     return (tup,experts)
 
