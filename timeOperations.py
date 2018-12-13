@@ -7,6 +7,9 @@
 
 from constants import openingTime
 from constants import closingTime
+from constants import monthDays
+from constants import hourMinutes
+from constants import yearMonths
 
 def formatNumber(x):
     """
@@ -44,20 +47,20 @@ def timeCalculate (inDate, inTime, increment):
     endMonth = date[1]
     endYear = date[0]
 
-    if endMinutes > 59:
-        endHours = endHours + endMinutes // 60
-        endMinutes = endMinutes % 60
+    if endMinutes > hourMinutes - 1:
+        endHours = endHours + endMinutes // hourMinutes
+        endMinutes = endMinutes % hourMinutes
     
     while (endHours == closingTime and endMinutes > 0) or endHours > closingTime:
         endHours = openingTime + (endHours-closingTime)
         endDay += 1
 
-    while endDay > 30:
-        endDay = endDay - 30
+    while endDay > monthDays:
+        endDay = endDay - monthDays
         endMonth += 1
 
-    while endMonth > 12:
-        endMonth = endMonth - 12
+    while endMonth > yearMonths:
+        endMonth = endMonth - yearMonths
         endYear += 1
 
     return (
@@ -74,7 +77,7 @@ def convertTime (inTime):
     Ensures: the amount of minutes as int
     """
 
-    return int(inTime[3:]) + 60*int(inTime[0:2])
+    return int(inTime[3:]) + hourMinutes*int(inTime[0:2])
 
 def travelTime (inDate, inTime):
     """
@@ -95,12 +98,12 @@ def travelTime (inDate, inTime):
     year = int(date[0])
 
     if time[0] >= 19:
-        if month == 12 and day == 30:
+        if month == yearMonths and day == monthDays:
             return (
                 str(year + 1) + '-01-01',
                 str('08:00')
             )
-        elif day == 30:
+        elif day == monthDays:
             return (
                 str(year) + '-' + formatNumber(month+1) + '-01',
                 str('08:00')
@@ -111,4 +114,4 @@ def travelTime (inDate, inTime):
                 str('08:00')
             )
     else:
-        return timeCalculate(inDate, inTime, 60)
+        return timeCalculate(inDate, inTime, hourMinutes)

@@ -5,6 +5,7 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+from constants import hourMinutes
 
 def takeSpaces(listALL):
     """
@@ -44,7 +45,7 @@ def formatClients(listcl): #final list of clients to itenerate on
     for i in listcl:
         i[4] = int(i[4])
         i[5] = int(i[5])
-        i[7] = int(i[7][0])*60 + int(i[7][2:4])  # hours in minutes
+        i[7] = int(i[7][0])*hourMinutes + int(i[7][2:4])  # hours in minutes
         
     return listcl
 

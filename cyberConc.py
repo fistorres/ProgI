@@ -11,6 +11,7 @@ import formated
 import filesWriting
 import scheduling
 import timeOperations
+from constants import outputIncrement
 
 
 def checkError(fileNameExperts, fileNameClients):
@@ -72,7 +73,7 @@ def assign(fileNameExperts, fileNameClients):
     timestamp = timeOperations.timeCalculate(
         filesReading.readHeader(fileNameExperts)[0],
         filesReading.readHeader(fileNameExperts)[1],
-        30  # time increment from input file
+        outputIncrement  # time increment from input file
     )
 
     # Creates a new file for the schedule
