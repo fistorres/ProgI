@@ -64,8 +64,8 @@ def atribution (client, experts):
     expertshour = copy.deepcopy(experts)
     
     for i in expertshour:
-        i[5] = constants.timeTravel(i[5],i[6])[0]
-        i[6] = constants.timeTravel(i[5],i[6])[1]
+        i[5] = constants.travelTime(i[5],i[6])[0]
+        i[6] = constants.travelTime(i[5],i[6])[1]
 
     compatibleExperts = []
     for i in expertshour:
