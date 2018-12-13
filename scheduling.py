@@ -35,9 +35,9 @@ def atributional(clients,experts):
 
 def atribution (client, experts):
     """
-    Matches a client request with a list of experts
-    Requires: cient as a list with the atributes as stated in the project
-    Requires: experts a list in which each item is a list of atributes of a specific expert,
+    Matches a client request with a list of experts and updates the list of experts
+    Requires: client as a list with the attributes as stated in the project
+    Requires: experts a list in which each item is a list of attributes of a specific expert,
     as stated in the project
     Ensures: a list with the attributes of the expert that best matches the request,
     according to the project.
@@ -66,30 +66,29 @@ def atribution (client, experts):
         return (["declined",],experts)
 
             
-    # buscar indice do expert sorteado
+    # search for the selected expert index
     indi = expertshour.index(compatibleExperts[0])
-    # alterar apenas o expert selecionado para a hora extra
+    # update just the selected expert to the new hour
     experts[indi] = copy.deepcopy(compatibleExperts[0])
 
-
-    # tuplo com (data,hora) do client e exp para compara-los
+    # tuple with (date, time) of the client and expert to compare them
     compareCli = (client[2],client[3])
     compareExp = (compatibleExperts[0][5],compatibleExperts[0][6])
     listaCliExp = (compareCli,compareExp)
-    # compara função
+    # finds the latest time of availability between the client and the expert
     TimeSchedule = sorted(listaCliExp, key=lambda element: (element[0], element[1]))[1]
 
 
-    # update da hora e do dia disponivel
+    # updates the available time and date
     newTime = timeOperations.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
-    experts[indi][5] = newTime[0] #data
-    experts[indi][6] = newTime[1] #hora
+    experts[indi][5] = newTime[0] #date
+    experts[indi][6] = newTime[1] #time
 
-    # update do dinheiro acumulado
+    # updates the total earned amount
     experts[indi][7] = experts[indi][7] + (experts[indi][4]*client[7])/60
 
     
-    #faz return do expert,data do schedule,hora do schedule, e da lista experts atualizada    
+    #returns the  expert, schedule date, schedule time and the updated experts list
     return (compatibleExperts[0],TimeSchedule[0],TimeSchedule[1],experts)
 
 
@@ -110,13 +109,9 @@ def sortScheduleOutput(schedule):
             declined.append(i)
             schedule.remove(i)
 
-            
-        #print(i,i[0],i[2],i[3])
-
     # sorts declined in alphabetical order
     declined = sorted(declined, key=itemgetter(0))
-    
-        
+
     # sorts the scheduled appointments
     schedule = sorted(schedule, key=itemgetter(2,3,0))
 
