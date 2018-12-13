@@ -65,8 +65,6 @@ def addExpert(fileName, expert):
     file = open(fileName,'a')  # opens the corresponding file in append mode
 
     # writes the expert information, as well as the corresponding time
-
-    print(expert[0])
     
     file.write(
         str(expert[0]) + ', ' +

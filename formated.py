@@ -13,6 +13,7 @@ def takeSpaces(listALL):
     Requires: listALL as list 
     Ensures: listALL with no unnecessary spaces
     """
+    #range starts at 1 because we don't want to eleminate the spaces of the names
     for i in listALL:
         for j in range(1,len(i)):
             i[j] = str(i[j]).replace(" ","")
