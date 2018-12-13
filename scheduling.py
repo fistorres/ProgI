@@ -13,12 +13,11 @@ import copy
 
 def attributional(clients,experts):
     """
-    Runs the attribution function for each of the clients
-    in the clients list
-    Requires: clients as list
-    Requires: experts as list
-    Ensures: a list in the following format
-    (client name, expert name)
+    Runs the attribution function for each of the clients in the clients list.
+    Requires: clients as list.
+    Requires: experts as list.
+    Ensures: a tuple in the following format (client name, expert name) and
+    the list of experts updated.
     """
     tup = []
     for i in clients:
@@ -33,13 +32,13 @@ def attributional(clients,experts):
 
 def attribution (client, experts):
     """
-    Matches a client request with a list of experts and updates the list of experts
-    Requires: client as a list with the attributes as stated in the project
-    Requires: experts a list in which each item is a list of attributes of a specific expert,
-    as stated in the project
-    Ensures: a list with the attributes of the expert that best matches the request,
-    according to the project.
-    An empty list means a match isn't possible
+    Matches a client request with an experts of a list of experts and
+    updates the list of experts
+    Requires: client as a list with the attributes stated in the project.
+    Requires: experts as a list in which each item is a list of attributes
+    of a specific expert, as stated in the project.
+    Ensures: a tuple with the name of the expert as str, the day and time scheduled as str,
+    and the list of experts updated. An empty list means a match isn't possible
     """
 
     
@@ -57,21 +56,22 @@ def attribution (client, experts):
 
     compatibleExperts = sorted(compatibleExperts, key=itemgetter(5, 6, 4, 7, 0))
     # sorts the compatibleExperts list by date, then by time, then by pay, then by name
-    # compatibleExperts[0] >> WINNER
 
     
     if len(compatibleExperts) == 0:
         return (["declined",],experts)
 
+    # the first element of the sorted list is the best matched expert
+    chosenExp = compatibleExperts[0] 
             
     # search for the selected expert index
-    indi = expertshour.index(compatibleExperts[0])
+    indi = expertshour.index(chosenExp)
     # update just the selected expert to the new hour
-    experts[indi] = copy.deepcopy(compatibleExperts[0])
+    experts[indi] = copy.deepcopy(chosenExp)
 
     # tuple with (date, time) of the client and expert to compare them
     compareCli = (client[2],client[3])
-    compareExp = (compatibleExperts[0][5],compatibleExperts[0][6])
+    compareExp = (chosenExp[5],chosenExp[6])
     listaCliExp = (compareCli,compareExp)
     # finds the latest time of availability between the client and the expert
     TimeSchedule = sorted(listaCliExp, key=lambda element: (element[0], element[1]))[1]
@@ -87,7 +87,7 @@ def attribution (client, experts):
 
     
     #returns the  expert, schedule date, schedule time and the updated experts list
-    return (compatibleExperts[0],TimeSchedule[0],TimeSchedule[1],experts)
+    return (chosenExp,TimeSchedule[0],TimeSchedule[1],experts)
 
 
 def sortScheduleOutput(schedule):
