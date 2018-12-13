@@ -15,12 +15,14 @@ from constants import outputIncrement
 
 
 def checkError(fileNameExperts, fileNameClients):
-    """Checks to see if the inputFiles are valid. Checks if the headers of the experts and
+    """
+    Checks to see if the inputFiles are valid. Checks if the headers of the experts and
     clients files are equal and if the header of a file matches it's name
     Requires: fileNameExperts, fileNameClients are str, with the names
     of the files representing the list of experts and clients, respectively,
     following the format indicated in the project.
-    Ensures: return True if the files are valid and False if not"""
+    Ensures: return True if the files are valid and False if not
+    """
 
     # Tests if the clients match between Client and Expert
     headExp = filesReading.readHeader(fileNameExperts)
