@@ -44,7 +44,6 @@ def timeCalculate (inDate, inTime, increment):
         endMinutes = endMinutes % 60
     
     while (endHours == 20 and endMinutes > 0) or endHours > 20:
-        print(endHours)
         endHours = 8 + (endHours-20)
         endDay += 1
 
