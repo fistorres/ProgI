@@ -63,11 +63,11 @@ def assign(fileNameExperts, fileNameClients):
     formatedcli = formated.formatClients(rawcl)
 
     # schedules the jobs and matches the clients and experts into a tuple
-    atributionalOutput = scheduling.atributional(formatedcli,formatedexp)
-    tupleClientExpert = atributionalOutput[0]
+    attributionalOutput = scheduling.attributional(formatedcli,formatedexp)
+    tupleClientExpert = attributionalOutput[0]
 
     # updates the Experts list based on the attributions
-    updatedExperts = atributionalOutput[1]
+    updatedExperts = attributionalOutput[1]
 
     # sorts the lists in the order to be written in the file
     tupleClientExpert = scheduling.sortScheduleOutput(tupleClientExpert)

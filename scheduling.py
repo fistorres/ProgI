@@ -5,13 +5,13 @@
 # 49187 Sofia Torres
 # 49269 Mário Gil Oliveira
 
+
 from operator import itemgetter
 import timeOperations
 import copy
 
 
-
-def atributional(clients,experts):
+def attributional(clients,experts):
     """
     Runs the attribution function for each of the clients
     in the clients list
@@ -22,7 +22,7 @@ def atributional(clients,experts):
     """
     tup = []
     for i in clients:
-        exp = atribution(i,experts)
+        exp = attribution(i,experts)
         if len(exp[0]) > 1:
             tup = tup + [(i[0],exp[0][0],exp[1],exp[2]),]
         else:
@@ -31,9 +31,7 @@ def atributional(clients,experts):
     return (tup,experts)
 
 
-#    return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
-
-def atribution (client, experts):
+def attribution (client, experts):
     """
     Matches a client request with a list of experts and updates the list of experts
     Requires: client as a list with the attributes as stated in the project
@@ -116,17 +114,17 @@ def sortScheduleOutput(schedule):
 
     # merging the two lists, making sure the declined requests go first
     sortedSchedule = declined + schedule
-
-
     return sortedSchedule
 
+
 def sortExpertsOutput(experts):
-     """
+    """
     Takes an unsorted experts list and sorts it according to the project criteria,
     in the order that will be outputted to the file.
     Requires: experts as list
     Ensures: an experts list sorted by their availability
     """
+
      #sorting by date, then time
      output = sorted(experts, key=lambda element: (element[5], element[6]))
      return output
