@@ -90,7 +90,7 @@ def travelTime (inDate, inTime):
     month = int(date[1])
     year = int(date[0])
 
-    if time[1] >= 19:
+    if time[0] >= 19:
         if month == 12 and day == 30:
             return (
                 str(year + 1) + '-01-01',
@@ -98,7 +98,12 @@ def travelTime (inDate, inTime):
             )
         elif day == 30:
             return (
-                str(year + 1) + '-' + formatNumber(month+1) + '-01',
+                str(year) + '-' + formatNumber(month+1) + '-01',
+                str('08:00')
+            )
+        else:
+            return (
+                str(year) + '-' + formatNumber(month) + '-' + formatNumber(day+1),
                 str('08:00')
             )
     else:

@@ -56,7 +56,7 @@ def atribution (client, experts):
     Requires: cient as a list with the atributes as stated in the project
     Requires: experts a list in which each item is a list of atributes of a specific expert,
     as stated in the project
-    Ensures: a list with the atributes of the expert that best matches the request,
+    Ensures: a list with the attributes of the expert that best matches the request,
     according to the project.
     An empty list means a match isn't possible
     """
