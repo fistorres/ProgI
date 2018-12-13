@@ -124,7 +124,6 @@ def sortExpertsOutput(experts):
     Requires: experts as list
     Ensures: an experts list sorted by their availability
     """
-
-     #sorting by date, then time
-     output = sorted(experts, key=lambda element: (element[5], element[6]))
-     return output
+    # sorting by date, then time
+    output = sorted(experts, key=lambda element: (element[5], element[6]))
+    return output
