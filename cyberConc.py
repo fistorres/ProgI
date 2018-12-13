@@ -10,7 +10,7 @@ import filesReading
 import formated
 import filesWriting
 import scheduling
-import timeOperations
+import dateTime
 from constants import outputIncrement
 
 
@@ -75,7 +75,7 @@ def assign(fileNameExperts, fileNameClients):
 
     # Calculates the timestamp of the new file,
     # based on the amount of minutes in outputIncrement
-    timestamp = timeOperations.timeCalculate(
+    timestamp = dateTime.timeCalculate(
         filesReading.readHeader(fileNameExperts)[0],
         filesReading.readHeader(fileNameExperts)[1],
         outputIncrement  # time increment from input file

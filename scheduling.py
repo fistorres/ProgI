@@ -7,7 +7,7 @@
 
 
 from operator import itemgetter
-import timeOperations
+import dateTime
 import copy
 
 
@@ -46,8 +46,8 @@ def attribution (client, experts):
     expertshour = copy.deepcopy(experts)
     
     for i in expertshour:
-        i[5] = timeOperations.travelTime(i[5],i[6])[0]
-        i[6] = timeOperations.travelTime(i[5],i[6])[1]
+        i[5] = dateTime.travelTime(i[5],i[6])[0]
+        i[6] = dateTime.travelTime(i[5],i[6])[1]
 
     compatibleExperts = []
     for i in expertshour:
@@ -78,7 +78,7 @@ def attribution (client, experts):
 
 
     # updates the available time and date
-    newTime = timeOperations.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
+    newTime = dateTime.timeCalculate(TimeSchedule[0],TimeSchedule[1],client[7])
     experts[indi][5] = newTime[0] #date
     experts[indi][6] = newTime[1] #time
 
