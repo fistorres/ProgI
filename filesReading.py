@@ -21,15 +21,11 @@ def readFile(fileName):
     outputList = []
 
     # header always has 7 lines
-    i = 0
-    while i < 7:
+    for i in range(7):
         fileIn.readline()
-        i = i+1
 
-    i = 0
-    while i < lenfile-7:
-        outputList.append(fileIn.readline().replace("*","").replace("\n", "").split(","))
-        i = i+1
+    for i in range(lenfile-7):
+        outputList.append(fileIn.readline().replace("*","").replace("\n","").split(","))
 
     return outputList
 
@@ -40,7 +36,8 @@ def readHeader(fileName):
     company as variables.
     Requires : fileName is str, the name of a .txt file listing experts,
     following the format specified in the project.
-    Ensures: a tuple of company,day and time as str"""
+    Ensures: tuple with day, time, company and scope as str
+    """
 
     fileIn = open(fileName, 'r')
 
@@ -51,7 +48,6 @@ def readHeader(fileName):
     fileIn.readline()
     company = fileIn.readline().replace("\n", "")
     scope = fileIn.readline().replace("\n", "").replace(":","")
-    
     return (day,time,company,scope)
 
 
