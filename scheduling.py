@@ -11,7 +11,7 @@ import copy
 
 
 
-def atributional(clients,experts):
+def attributional(clients,experts):
     """
     Runs the attribution function for each of the clients
     in the clients list
@@ -22,7 +22,7 @@ def atributional(clients,experts):
     """
     tup = []
     for i in clients:
-        exp = atribution(i,experts)
+        exp = attribution(i,experts)
         if len(exp[0]) > 1:
             tup = tup + [(i[0],exp[0][0],exp[1],exp[2]),]
         else:
@@ -33,7 +33,7 @@ def atributional(clients,experts):
 
 #    return (compatibleExperts[0],compatibleExperts[0][5],compatibleExperts[0][6],experts)
 
-def atribution (client, experts):
+def attribution (client, experts):
     """
     Matches a client request with a list of experts and updates the list of experts
     Requires: client as a list with the attributes as stated in the project
