@@ -7,6 +7,7 @@
 
 import filesReading
 
+
 def newFile(date, time, fileType, company):
     """
     Opens a file in write mode and writes the required header in the first lines.
@@ -51,6 +52,7 @@ def addSchedule(fileName, tupleClientExpert):
             tupleClientExpert[1] + '\n'
         )
         file.close()
+
 
 def addExpert(fileName, expert):
     """
