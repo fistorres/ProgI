@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # 2018-2019 Programação 1 (LTI)
 # Grupo 38
 # 49187 Sofia Torres
@@ -21,7 +23,7 @@ def checkError(fileNameExperts, fileNameClients):
     Ensures: return True if the files are valid and False if not"""
 
     # Testar se os cabeçalhos são correspondentes entre Client e Expert
-    headExp = filesReading.readHeader(fileNameExperts) 
+    headExp = filesReading.readHeader(fileNameExperts)
     headCli = filesReading.readHeader(fileNameClients)
     if headCli[0:3] != headExp[0:3]:
         print("Error in input files: inconsistent files",
@@ -77,13 +79,12 @@ def assign(fileNameExperts, fileNameClients):
     # Creates a new file for the schedule
     scheduleFile = filesWriting.newFile(
         timestamp[0],
-        timestamp[1], 
+        timestamp[1],
         'schedule',
         filesReading.readHeader(fileNameClients)[2]
     )
 
     for i in tupleClientExpert:
-       # print(i)
         filesWriting.addSchedule(scheduleFile, i)
 
     expertsFile = filesWriting.newFile(
@@ -103,7 +104,3 @@ inputExperts, inputClients = sys.argv[1:]
 
 if checkError(inputExperts, inputClients):
     assign(inputExperts, inputClients)
-
-
-
-
